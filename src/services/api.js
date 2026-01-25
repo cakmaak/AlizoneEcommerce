@@ -12,12 +12,13 @@ const api = axios.create({
 // REQUEST INTERCEPTOR
 api.interceptors.request.use(
   (config) => {
-    const isPublic =
-      config.url.includes("/alizone/login") ||
-      config.url.includes("/alizone/user/signup") ||
-      config.url.includes("/alizone/product/getalldtoproduct")||
-      config.url.includes("/alizone/user/reset-password") ||
-     config.url.includes("/alizone/user/forgot-password");
+    const isPublic = [
+  "/alizone/login",
+  "/alizone/user/signup",
+  "/alizone/product/getalldtoproduct",
+  "/alizone/user/reset-password",
+  "/alizone/user/forgot-password",
+].some(path => config.url.includes(path)) || config.url.match(/^\/alizone\/product\/getproduct/);
 
     if (!isPublic) {
       const token = localStorage.getItem("token");
