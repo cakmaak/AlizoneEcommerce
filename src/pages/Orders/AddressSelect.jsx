@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAddresses } from "../../features/address/addressSlice";
+import { createOrder as createOrderApi } from "../../services/orderApi";
 import { useNavigate } from "react-router-dom";
 import { MapPin, User, Phone, FileText, Building2, Home, ShoppingCart,Check } from "lucide-react";
 import { fetchCart } from "../../features/cart/cartSlice";
 import { addAddress } from "../../features/address/addressSlice";
 import { Link } from "react-router-dom";
 import { showToast } from "../../components/ui/showToast";
-import { createOrder } from "../../features/order/orderSlice";
-
 
 
 
@@ -56,24 +55,22 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
     );
   const handleCreateOrder = async () => {
   if (!selectedAddressId) {
-    showToast("error", "Adres seç");
+    showToast("error", "Lütfen bir teslimat adresi seçin");
     return;
   }
 
   if (!termsAccepted) {
-    showToast("error", "KVKK ve sözleşmeleri kabul etmelisiniz");
+   showToast("error", "KVKK ve Mesafeli Satış Sözleşmesini kabul etmelisiniz");
     return;
   }
 
   try {
     setCreatingOrder(true);
 
-    const result = await dispatch(
-      createOrder({
-        addressId: selectedAddressId,
-        contractsAccepted: true,
-      })
-    ).unwrap();
+    const result = await createOrderApi({
+      addressId: selectedAddressId,
+      contractsAccepted: true,
+    });
 
     const url = new URL(result.paymentLink);
     const orderId = url.searchParams.get("orderId");
@@ -81,7 +78,7 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
 
     navigate(`/fakebank?orderId=${orderId}&amount=${amount}`);
   } catch (err) {
-    showToast("error", "Sipariş oluşturulamadı");
+   showToast("error", "Sipariş oluşturulamadı");
   } finally {
     setCreatingOrder(false);
   }
