@@ -8,7 +8,6 @@ import { fetchCart } from "../../features/cart/cartSlice";
 import { addAddress } from "../../features/address/addressSlice";
 import { Link } from "react-router-dom";
 import { showToast } from "../../components/ui/showToast";
-import { createOrder } from "../../redux/slices/orderSlice";
 
 
 
@@ -54,19 +53,34 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
 </button>
       </div>
     );
+  const handleCreateOrder = async () => {
+  if (!selectedAddressId) {
+    showToast("error", "Lütfen bir teslimat adresi seçin");
+    return;
+  }
 
+  if (!termsAccepted) {
+   showToast("error", "KVKK ve Mesafeli Satış Sözleşmesini kabul etmelisiniz");
+    return;
+  }
 
-const handleCreateOrder = async () => {
-  const result = await dispatch(
-    createOrder({
+  try {
+    setCreatingOrder(true);
+
+    const result = await createOrderApi({
       addressId: selectedAddressId,
       contractsAccepted: true,
-    })
-  );
+    });
 
-  if (createOrder.fulfilled.match(result)) {
-    const paymentLink = result.payload.paymentLink;
-    window.location.href = paymentLink;
+    const url = new URL(result.paymentLink);
+    const orderId = url.searchParams.get("orderId");
+    const amount = url.searchParams.get("amount");
+
+    navigate(`/fakebank?orderId=${orderId}&amount=${amount}`);
+  } catch (err) {
+   showToast("error", "Sipariş oluşturulamadı");
+  } finally {
+    setCreatingOrder(false);
   }
 };
   return (
