@@ -54,7 +54,7 @@ const AppRouter = () => {
 
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/references" element={<References />} />
@@ -150,16 +150,9 @@ const AppRouter = () => {
   <Route path="delivered-truck" element={<DeliveredTruck />} />
   <Route path="update-btu" element={<UpdateBtu />} />
   <Route path="orders" element={<AdminOrders />} />
-  <Route path="/admin/refund-order" element={<RefundOrder />} />
-  <Route path="/admin/set-teklif"element={<Setteklifal />}/>
-  
-
-
-
-
-
+  <Route path="refund-order" element={<RefundOrder />} />
+  <Route path="set-teklif" element={<Setteklifal />} />
 </Route>
-
       </Routes>
     </BrowserRouter>
   );
