@@ -91,7 +91,7 @@ const Footer = () => {
               <Phone size={16} /> 0850 000 00 00
             </div>
             <div className="flex items-center gap-2">
-              <Mail size={16} /> info@klimamarket.com
+              <Mail size={16} /> info@alizoneklima.com
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={16} /> İstanbul, Türkiye

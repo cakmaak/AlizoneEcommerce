@@ -31,13 +31,13 @@ const Login = () => {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
 
         {/* === ÜST GÖRSEL (KÜÇÜK & ŞIK) === */}
-        <div className="h-56">
-          <img
-            src="https://res.cloudinary.com/diyibvvua/image/upload/v1765462385/WhatsApp_Image_2025-11-16_at_14.48.31_be2ory.jpg"
-            alt="Alizone İklimlendirme"
-            className="w-full h-full object-cover"
-          />
-        </div>
+       <div className="h-96 flex items-center justify-center overflow-hidden rounded-t-3xl">
+  <img
+    src="https://res.cloudinary.com/diyibvvua/image/upload/v1765462385/WhatsApp_Image_2025-11-16_at_14.48.31_be2ory.jpg"
+    alt="Alizone İklimlendirme"
+    className="w-full h-full object-cover"
+  />
+</div>
 
         {/* === FORM === */}
         <div className="p-8">
