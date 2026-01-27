@@ -51,7 +51,7 @@ const Home = () => {
           loop
           playsInline
         >
-          <source src="/Homepagevideo.mp4" type="video/mp4" />
+          <source src="/Alizone_iklimlendirme.mp4" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-black/40" />
