@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 
 import Home from "../pages/Home/Home";
@@ -49,7 +49,7 @@ import Setteklifal from "../pages/Admin/Setteklifal";
 
 const AppRouter = () => {
   return (
-    <BrowserRouter basename="/">
+    <HashRouter basename="/">
       <Routes>
 
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
@@ -154,7 +154,7 @@ const AppRouter = () => {
   <Route path="set-teklif" element={<Setteklifal />} />
 </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
