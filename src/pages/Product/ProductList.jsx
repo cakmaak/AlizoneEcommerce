@@ -11,7 +11,37 @@ const BRAND_PRIORITY = {
   MITSUBISHI: 3,
   SAKURA: 99, 
 };
+const FunBanner = () => {
+  const messages = [
+    "❄️ Eviniz için en ferah çözümler!",
+    "🔥 Yaz sıcağını dert etmeyin!",
+    "💰 KDV dahil fiyatlar!",
+    "🚚 Hızlı teslim ve ücretsiz montaj!",
+  ];
 
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % messages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="mb-6 rounded-3xl overflow-hidden relative shadow-lg">
+      <div className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 p-4 text-white font-bold text-center text-lg md:text-xl animate-pulse">
+        {messages[index]}
+      </div>
+
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <span className="absolute animate-bounce text-white text-xl" style={{ top: "10%", left: "5%" }}>❄️</span>
+        <span className="absolute animate-bounce text-white text-xl" style={{ top: "40%", left: "80%" }}>🔥</span>
+        <span className="absolute animate-bounce text-white text-xl" style={{ top: "70%", left: "20%" }}>💰</span>
+      </div>
+    </div>
+  );
+};
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -66,108 +96,85 @@ const ProductList = () => {
   }
 
   return (
-    <main className="pt-28 min-h-screen bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50">
-      
-      <div className="max-w-[1440px] mx-auto px-3 lg:px-6">
+    
+   <main className="pt-28 min-h-screen bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50">
+  <div className="max-w-[1440px] mx-auto px-3 lg:px-6">
 
-        {/* === MOBİL FİLTRE BUTONU === */}
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className="lg:hidden w-full mb-6 flex items-center justify-between px-6 py-4 bg-white rounded-2xl shadow font-bold text-indigo-600"
-        >
-          Filtrele
-          <ChevronDown
-            className={`transition ${showFilters ? "rotate-180" : ""}`}
-          />
-        </button>
+    {/* === FUN BANNER === */}
+    <FunBanner />
 
-        <div className="grid lg:grid-cols-12 gap-8">
-
-          {/* === FİLTRE PANELİ === */}
-         <aside
-  className={`
-    lg:col-span-3 lg:pl-0
-    ${showFilters ? "block" : "hidden"}
-    lg:block
-  `}
->
-  <div
-    className="bg-white rounded-3xl shadow-xl p-4 space-y-6
-  lg:sticky lg:top-28
-  h-auto lg:h-[calc(100vh-8rem)]
-  overflow-y-auto
-  direction-rtl
-  "
-  >
-    {/* === LOGO === */}
-    <div className="flex justify-center mb-4">
-      <img
-        src="https://res.cloudinary.com/diyibvvua/image/upload/v1765462385/WhatsApp_Image_2025-11-16_at_14.48.31_be2ory.jpg"
-        alt="Logo"
-        className="w-50 object-contain"
-      />
-    </div>
-
-    {/* === BAŞLIK === */}
-    <div className="flex items-center gap-2 text-indigo-600 font-semibold text-base tracking-wide">
-      <Filter size={16} />
+    {/* === MOBİL FİLTRE BUTONU === */}
+    <button
+      onClick={() => setShowFilters(!showFilters)}
+      className="lg:hidden w-full mb-6 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-white font-bold rounded-2xl shadow-lg hover:scale-105 transition-transform"
+    >
       Filtrele
-    </div>
+      <ChevronDown className={`transition-transform ${showFilters ? "rotate-180" : ""}`} />
+    </button>
 
-    <FilterGroup title="Kategori">
-      {CATEGORIES.map((c) => (
-        <Checkbox
-          key={c}
-          label={c}
-          checked={filters.kategori.includes(c)}
-          onChange={() => toggleFilter("kategori", c)}
-        />
-      ))}
-    </FilterGroup>
+    {/* === GRID === */}
+    <div className="grid lg:grid-cols-12 gap-8">
 
-    <FilterGroup title="Marka">
-      {brands.map((m) => (
-        <Checkbox
-          key={m}
-          label={m}
-          checked={filters.marka.includes(m)}
-          onChange={() => toggleFilter("marka", m)}
-        />
-      ))}
-    </FilterGroup>
+      {/* === FİLTRE PANELİ === */}
+      <aside className={`lg:col-span-3 lg:pl-0 ${showFilters ? "block" : "hidden"} lg:block`}>
+        <div className="bg-white rounded-3xl shadow-xl p-4 space-y-6
+                        lg:sticky lg:top-28
+                        h-auto lg:h-[calc(100vh-8rem)]
+                        overflow-y-auto">
+          {/* Logo */}
+          <div className="flex justify-center mb-4">
+            <img
+              src="https://res.cloudinary.com/diyibvvua/image/upload/v1765462385/WhatsApp_Image_2025-11-16_at_14.48.31_be2ory.jpg"
+              alt="Logo"
+              className="w-50 object-contain"
+            />
+          </div>
 
-    <FilterGroup title="BTU">
-      {BTUS.map((b) => (
-        <Checkbox
-          key={b}
-          label={`${b} BTU`}
-          checked={filters.btu.includes(b)}
-          onChange={() => toggleFilter("btu", b)}
-        />
-      ))}
-    </FilterGroup>
-  </div>
-</aside>
+          {/* Filtre Başlığı */}
+          <div className="flex items-center gap-2 text-indigo-600 font-semibold text-base tracking-wide">
+            <Filter size={16} />
+            Filtrele
+          </div>
 
-          {/* === ÜRÜNLER === */}
-          <section className="lg:col-span-9">
-            {filteredProducts.length === 0 ? (
-              <div className="bg-white rounded-3xl shadow p-20 text-center font-semibold text-gray-600">
-                Bu filtrelere uygun ürün bulunamadı 😔
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
-          </section>
+          <FilterGroup title="Kategori">
+            {CATEGORIES.map((c) => (
+              <Checkbox key={c} label={c} checked={filters.kategori.includes(c)} onChange={() => toggleFilter("kategori", c)} />
+            ))}
+          </FilterGroup>
 
+          <FilterGroup title="Marka">
+            {brands.map((m) => (
+              <Checkbox key={m} label={m} checked={filters.marka.includes(m)} onChange={() => toggleFilter("marka", m)} />
+            ))}
+          </FilterGroup>
+
+          <FilterGroup title="BTU">
+            {BTUS.map((b) => (
+              <Checkbox key={b} label={`${b} BTU`} checked={filters.btu.includes(b)} onChange={() => toggleFilter("btu", b)} />
+            ))}
+          </FilterGroup>
         </div>
-      </div>
-    </main>
-  );
+      </aside>
+
+      {/* === ÜRÜNLER === */}
+      <section className="lg:col-span-9">
+        {filteredProducts.length === 0 ? (
+          <div className="bg-white rounded-3xl shadow p-12 text-center font-semibold text-pink-500 text-lg animate-pulse">
+            Üzgünüz 😢 <br /> Bu filtrelere uygun ürün bulunamadı!
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+      </section>
+
+    </div>
+  </div>
+</main>
+  )
 };
 
 /* === ALT BİLEŞENLER === */

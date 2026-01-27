@@ -16,6 +16,9 @@ const BRAND_LOGOS = {
   TCL: "https://res.cloudinary.com/diyibvvua/image/upload/v1769003574/tc1509t993-tcl-logo-tcl-logo-png-and-vector-logo-download_tkrwkj.png"
 };
 
+
+
+
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -98,12 +101,14 @@ Fiyat: ₺${product.fiyat}
 const isTeklifOnly = product.teklifilesatilir === false;
 
   return (
-    <div
+    
+    <div className="group bg-white rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+
       
-      className="group bg-white rounded-3xl border border-gray-200 shadow-sm"
-    >
+
+      
       {/* IMAGE SLIDER */}
-      <div className="relative h-80 bg-gray-50 flex items-center justify-center overflow-hidden rounded-t-3xl">
+      <div className="relative h-72 bg-gradient-to-tr from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center overflow-hidden rounded-t-3xl">
         <img
           src={images[index]}
           alt={product.isim}
@@ -186,23 +191,20 @@ const isTeklifOnly = product.teklifilesatilir === false;
     Stokta Yok
   </button>
 ) : isTeklifOnly ? (
-   <button
+ <button
   onClick={handleTeklifMail}
-  className=" w-full py-3 rounded-xl bg-gray-900 text-white
-    text-sm font-semibold hover:bg-gray-800 transition"
+  className=" w-full py-3 rounded-xl bg-pink-600 text-white text-sm font-semibold hover:bg-pink-700 transition transform hover:scale-105"
 >
   Teklif Al
 </button>
  
 ) : (
   <button
-    onClick={handleAddToCart}
-    className="w-full py-3 rounded-xl bg-indigo-600 text-white
-    text-sm font-semibold hover:bg-indigo-700 transition"
-    
-  >
-    Sepete Ekle
-  </button>
+  onClick={handleAddToCart}
+  className="w-full py-3 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition transform hover:scale-105"
+>
+  Sepete Ekle
+</button>
 )}
         
 {toast && (
