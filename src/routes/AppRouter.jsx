@@ -49,7 +49,7 @@ import Setteklifal from "../pages/Admin/Setteklifal";
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
 
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
