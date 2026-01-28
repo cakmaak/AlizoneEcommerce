@@ -88,7 +88,7 @@ const Footer = () => {
 
           <div className="space-y-3 text-sm">
             <div className="flex items-center gap-2">
-              <Phone size={16} /> 0850 000 00 00
+              <Phone size={16} /> 0554 230 9563
             </div>
             <div className="flex items-center gap-2">
               <Mail size={16} /> info@alizoneklima.com

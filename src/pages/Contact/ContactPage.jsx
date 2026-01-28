@@ -5,7 +5,7 @@ const ContactPage = () => {
       
 
       {/* HERO – HOME İLE AYNI MANTIK */}
-      <section className="relative min-h-[60vh] w-full overflow-hidden">
+      <section className="relative min-h-[60vh] w-full overflow-hidden pt-24">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
@@ -83,10 +83,10 @@ const ContactPage = () => {
               <div>
                 <p className="text-sm text-slate-500">E-posta</p>
                 <a
-                  href="mailto:alizoneteknoloji@hotmail.com"
+                  href="mailto:info@alizoneklima.com"
                   className="text-lg font-semibold text-slate-800 hover:text-emerald-600 transition"
                 >
-                  alizoneteknoloji@hotmail.com
+                  info@alizoneklima.com
                 </a>
               </div>
 
@@ -111,7 +111,7 @@ const ContactPage = () => {
             </a>
 
             <a
-              href="mailto:alizoneteknoloji@hotmail.com"
+              href="mailto:info@alizoneklima.com"
               className="w-full text-center py-4 rounded-xl border border-emerald-500 text-emerald-600 font-bold hover:bg-emerald-50 transition"
             >
               Mail Gönder
@@ -163,7 +163,7 @@ const ContactPage = () => {
 
     <div className="pt-8">
       <a
-              href="mailto:alizoneteknoloji@hotmail.com"
+              href="mailto:info@alizoneklima.com"
               className="w-full text-center py-4 rounded-xl bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition"
             >
               Proje & Toplu Satış İçin İletişime Geçin

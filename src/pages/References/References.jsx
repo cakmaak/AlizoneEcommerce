@@ -24,7 +24,7 @@ const references = [
     ],
   },
   {
-    title: "Bayındır Otel/Çankaya-BOSCH Split Klima ",
+    title: "Bayındır Otel-Çankaya-BOSCH Split Klima ",
     images: [
       "/Bayindir/1.jpg",
       "/Bayindir/2.jpg",
@@ -34,7 +34,7 @@ const references = [
     ],
   },
   {
-    title: "Türk Burger/Pursaklar Şubesi-BOSCH Kaset Tipi Klima ",
+    title: "Türk Burger-Pursaklar Şubesi-BOSCH Kaset Tipi Klima ",
     images: [
       "/TURKBURGER/1.jpg",
       "/TURKBURGER/2.jpg",
@@ -45,7 +45,7 @@ const references = [
   },
 
    {
-    title: "Tado Teknoloji/Kahramankazan-SAKURA Salon Tipi Klima ",
+    title: "Tado Teknoloji-Kahramankazan-SAKURA Salon Tipi Klima ",
     images: [
       "/Tadotek/1.jpeg",
       "/Tadotek/2.jpeg",
@@ -55,7 +55,7 @@ const references = [
   },
   
   {
-    title: "Bayındır Otel/Çankaya-BOSCH Split Klima ",
+    title: "Bayındır Otel-Çankaya-BOSCH Split Klima ",
     images: [
       "/Bayindir/1.jpg",
       "/Bayindir/2.jpg",
@@ -65,7 +65,19 @@ const references = [
     ],
   },
   {
-    title: "Prosista Asma Tavan ve Profil Sistemleri/Yenimahalle Yapı Marketçileri Sitesi-Split Klima/BOSCH SPLİT TİPİ KLİMA ",
+    title: "Arissa Point/Yenimahalle-Bosch 5 İç Ünite 1 Dış Ünite Multisplit Klima" ,
+    images: [
+      "/Arissa/1.jpeg",
+      "/Arissa/2.jpeg",
+      "/Arissa/3.jpeg",
+      "/Arissa/4.jpeg",
+      "/Arissa/5.jpeg",
+      "/Arissa/6.jpeg",
+     
+    ],
+  },
+  {
+    title: "Prosista Asma Tavan ve Profil Sistemleri-Yenimahalle Yapı Marketçileri Sitesi-Split Klima/BOSCH SPLİT TİPİ KLİMA ",
     images: [
       "/Prosista/1.jpeg",
       "/Prosista/2.jpeg",
@@ -75,20 +87,36 @@ const references = [
     ],
   },
   {
-    title: "Palan Otel/Ulus-BOSCH Split Klima ",
+    title: "Palan Otel-Ulus-BOSCH Split Klima ",
     images: [
-      "/palan-otel/1.jpg",
-      "/palan-otel/2.jpg",
-      "/palan-otel/3.jpg",
-      "/palan-otel/4.jpg",
+      "/PALAN/1.jpeg",
+      "/PALAN/2.jpeg",
+      "/PALAN/3.jpeg",
+      "/PALAN/4.jpeg",
+      "/PALAN/5.jpeg",
+      "/PALAN/6.jpeg",
+      "/PALAN/7.jpeg",
+      "/PALAN/8.jpeg",
+
     ],
   },
   {
-    title: "Nilova Cafe/Kahramankazan-CARRIER Salon Tipi Klima ",
+    title: "Navlungo Ankara Şubesi-Yenimahalle-BOSCH Split Klima",
+    images: [
+      "/Navlunga/1.jpeg",
+      "/Navlunga/2.jpeg",
+      "/Navlunga/3.jpeg",
+      "/Navlunga/4.jpeg",
+      
+     
+    ],
+  },
+  {
+    title: "Nilova Cafe-Kahramankazan-CARRIER Salon Tipi Klima ",
     images: [
       "/Nilova/1.jpeg",
       "/Nilova/2.jpeg",
-      "/Nilova/3.jpeg",
+      
      
     ],
   },
@@ -103,7 +131,7 @@ const references = [
     ],
   },
   {
-    title: "TADBİLEN SHOP CARRIER SALON TİPİ KLİMA/YENİMAHALLE ",
+    title: "TADBİLEN SHOP CARRIER SALON TİPİ KLİMA-YENİMAHALLE ",
     images: [
       "/Tadbilen/1.jpeg",
       "/Tadbilen/2.jpeg",
