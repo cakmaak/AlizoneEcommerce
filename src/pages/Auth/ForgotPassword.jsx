@@ -10,7 +10,11 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
      await api.post(
-  `alizone/user/forgot-password?email=${encodeURIComponent(email)}`
+  "/alizone/user/forgot-password",
+  null,
+  {
+    params: { email },
+  }
 );
       setMessage("📩 Şifre sıfırlama maili gönderildi");
       setError("");

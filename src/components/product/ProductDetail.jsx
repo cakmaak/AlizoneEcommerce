@@ -16,6 +16,8 @@ import { addCartItem } from "../../features/cart/cartSlice";
 import { useState } from "react";
 
 
+
+
 const InfoRow = ({ icon: Icon, label, value }) => (
   <div className="flex items-center gap-3 text-sm">
     <Icon size={16} className="text-indigo-600" />
@@ -29,6 +31,8 @@ const ProductDetail = ({ product }) => {
   const navigate = useNavigate();
   const [activeImage, setActiveImage] = useState(0);
   const [error, setError] = useState("");
+
+  
 
 
   
@@ -117,30 +121,28 @@ Fiyat: ₺${product.fiyat}
 
         {/* GÖRSELLER */}
         <div className="space-y-4">
-          <div className="bg-slate-100 rounded-xl h-[300px] flex items-center justify-center">
-            <img
-              src={product.resimler?.[activeImage]}
-              alt={product.isim}
-              className="max-h-[260px] object-contain"
-            />
-          </div>
+  <div className="bg-slate-100 rounded-xl h-[300px] flex items-center justify-center">
+    <img
+      src={product.resimler?.[activeImage]}
+      alt={product.isim}
+      className="max-h-[260px] object-contain"
+    />
+  </div>
 
-          <div className="flex gap-3 justify-center">
-            {product.resimler?.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveImage(i)}
-                className={`w-16 h-16 rounded-lg border ${
-                  activeImage === i
-                    ? "border-indigo-600"
-                    : "border-slate-200"
-                }`}
-              >
-                <img src={img} className="w-full h-full object-contain" />
-              </button>
-            ))}
-          </div>
-        </div>
+  <div className="flex gap-3 justify-center">
+    {product.resimler?.map((img, i) => (
+      <button
+        key={i}
+        onClick={() => setActiveImage(i)}
+        className={`w-16 h-16 rounded-lg border ${
+          activeImage === i ? "border-indigo-600" : "border-slate-200"
+        }`}
+      >
+        <img src={img} className="w-full h-full object-contain" />
+      </button>
+    ))}
+  </div>
+</div>
 
         {/* SAĞ BİLGİ */}
         <div className="space-y-5">
@@ -191,25 +193,50 @@ Fiyat: ₺${product.fiyat}
         </div>
       </div>
 
-      {/* ================= BAŞLICA ÖZELLİKLER ================= */}
-      <div>
-        <h2 className="text-lg font-bold mb-4">Başlıca Özellikler</h2>
+      
 
-        <div className="grid md:grid-cols-2 gap-3">
-          {product.onemliOzellikler?.map((oz, i) => (
-            <div
-              key={i}
-              className="flex items-start gap-2 text-sm bg-slate-50 rounded-lg p-3"
-            >
-              <CheckCircle
-                size={16}
-                className="text-emerald-600 mt-0.5"
-              />
-              <span>{oz}</span>
-            </div>
-          ))}
-        </div>
+      <div className="mt-6">
+  <h2 className="text-lg font-bold mb-4">Başlıca Özellikler & Garanti</h2>
+
+  <div className="grid md:grid-cols-2 gap-3">
+    {/* Başlıca Özellikler */}
+    {product.onemliOzellikler?.map((oz, i) => (
+      <div
+        key={i}
+        className="flex items-start gap-2 text-sm bg-slate-50 rounded-lg p-3"
+      >
+        <CheckCircle size={16} className="text-emerald-600 mt-0.5" />
+        <span className="text-slate-700">{oz}</span>
       </div>
+    ))}
+
+    {/* Garanti Süresi */}
+    {product.garantiAy && (
+      <div className="flex items-start gap-2 text-sm bg-slate-50 rounded-lg p-3">
+        <Award size={16} className="text-indigo-600 mt-0.5" />
+        <span className="text-slate-700">{product.garantiAy} Ay Garanti</span>
+      </div>
+    )}
+  </div>
+</div>
+
+      {/* ================= NOTLAR ================= */}
+{product.notlar?.length > 0 && (
+  <div className="mt-6">
+    <h2 className="text-lg font-bold mb-4">Notlar</h2>
+    <div className="grid md:grid-cols-2 gap-3">
+      {product.notlar.map((note, idx) => (
+        <div
+          key={idx}
+          className="flex items-start gap-2 text-sm bg-slate-50 rounded-lg p-3"
+        >
+          <CheckCircle size={16} className="text-emerald-600 mt-0.5" />
+          <span className="text-slate-700">{note}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
       {/* ================= DİĞER ÖZELLİKLER ================= */}
    {/* ================= DİĞER TEKNİK ÖZELLİKLER ================= */}
@@ -222,32 +249,44 @@ Fiyat: ₺${product.fiyat}
   <div className="mt-6 grid md:grid-cols-2 gap-6">
 
     {/* HAVA & SES */}
-    <div className="space-y-3 bg-slate-50 rounded-xl p-4">
-      <InfoRow
-        icon={Wind}
-        label="Hava Debisi"
-        value={
-          product.digerOzellikler?.havaDebisi?.icHavaM3h
-            ? `${product.digerOzellikler.havaDebisi.icHavaM3h} m³/h`
-            : "Belirtilmemiş"
-        }
-      />
-      <InfoRow
-        icon={Volume2}
-        label="İç Ünite (Düşük)"
-        value={`${product.digerOzellikler?.sesSeviyesi?.icDusukDb ?? "-"} dB`}
-      />
-      <InfoRow
-        icon={Volume2}
-        label="İç Ünite (Yüksek)"
-        value={`${product.digerOzellikler?.sesSeviyesi?.icYuksekDb ?? "-"} dB`}
-      />
-      <InfoRow
-        icon={Volume2}
-        label="Dış Ünite"
-        value={`${product.digerOzellikler?.sesSeviyesi?.disDb ?? "-"} dB`}
-      />
-    </div>
+   <div className="space-y-3 bg-slate-50 rounded-xl p-4">
+  <InfoRow
+    icon={Wind}
+    label="Hava Debisi"
+    value={
+      product.digerOzellikler?.havaDebisi?.icHavaM3h
+        ? `${product.digerOzellikler.havaDebisi.icHavaM3h} m³/h`
+        : "Belirtilmemiş"
+    }
+  />
+  <InfoRow
+    icon={Volume2}
+    label="İç Ünite (Düşük)"
+    value={
+      product.digerOzellikler?.sesSeviyesi?.icDusukDb != null
+        ? `${product.digerOzellikler.sesSeviyesi.icDusukDb} dB`
+        : "Belirtilmemiş"
+    }
+  />
+  <InfoRow
+    icon={Volume2}
+    label="İç Ünite (Yüksek)"
+    value={
+      product.digerOzellikler?.sesSeviyesi?.icYuksekDb != null
+        ? `${product.digerOzellikler.sesSeviyesi.icYuksekDb} dB`
+        : "Belirtilmemiş"
+    }
+  />
+  <InfoRow
+    icon={Volume2}
+    label="Dış Ünite"
+    value={
+      product.digerOzellikler?.sesSeviyesi?.disDb != null
+        ? `${product.digerOzellikler.sesSeviyesi.disDb} dB`
+        : "Belirtilmemiş"
+    }
+  />
+</div>
 
     {/* SICAKLIK */}
     <div className="space-y-3 bg-slate-50 rounded-xl p-4">
