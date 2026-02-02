@@ -28,6 +28,14 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
   const [orderId, setOrderId] = useState(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
+  const handleToggleSelect = (id) => {
+  if (selectedAddressId === id) {
+    setSelectedAddressId(null); // tekrar tıklayınca seçimi kaldır
+  } else {
+    setSelectedAddressId(id); // seç
+  }
+};
+
 
   useEffect(() => {
     dispatch(fetchAddresses());
@@ -205,49 +213,53 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
         {/* Adres Seçimi */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {items.map((address) => (
-            <label
-              key={address.id}
-              className={`bg-white rounded-2xl shadow-lg border-2 p-5 flex flex-col gap-3 cursor-pointer transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1
-                ${selectedAddressId === address.id ? "border-blue-500 shadow-2xl" : "border-gray-200"}
-              `}
-            >
-              <input
-                type="radio"
-                name="selectedAddress"
-                className="hidden"
-                value={address.id}
-                checked={selectedAddressId === address.id}
-                onChange={() => handleSelect(address.id)}
-              />
-              
-              {/* Kişi Bilgileri */}
-              <div className="flex items-center gap-3">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-xl">
-                  <User className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <p className="text-lg font-bold text-gray-900">{address.aliciAdiSoyadi}</p>
-                  <div className="flex items-center gap-2 text-gray-700 mt-1">
-                    <Phone className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm">{address.telefon}</span>
-                  </div>
-                </div>
-              </div>
-              {/* Adres */}
-              <div className="flex items-start gap-3 mt-2">
-                <MapPin className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                <div className="flex-1">
-                  <p className="text-gray-800">{address.adresSatir1}</p>
-                  {address.adresSatir2 && <p className="text-gray-700 mt-1">{address.adresSatir2}</p>}
-                  <div className="flex gap-2 mt-2 flex-wrap">
-                    <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs font-semibold">{address.ilce}</span>
-                    <span className="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">{address.sehir}</span>
-                    <span className="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-xs font-semibold">{address.ulke}</span>
-                  </div>
-                </div>
-              </div>
-            </label>
-          ))}
+  <label
+    key={address.id}
+    className={`relative bg-white rounded-2xl shadow-lg border-2 p-5 flex flex-col gap-3 cursor-pointer transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1
+      ${selectedAddressId === address.id ? "border-blue-500 shadow-2xl" : "border-gray-300"}
+    `}
+    onClick={() => handleToggleSelect(address.id)}
+  >
+    {/* Seçim kutusu */}
+    <div className={`absolute top-3 right-3 w-8 h-8 border-2 rounded-sm flex items-center justify-center
+      ${selectedAddressId === address.id ? "bg-blue-600 border-blue-600" : "bg-white border-gray-400"}`}
+    >
+      {selectedAddressId === address.id ? (
+        <Check className="w-4 h-4 text-white" />
+      ) : (
+        <span className="text-gray-800 text-xs">Seçiniz</span>
+      )}
+    </div>
+
+    {/* Kişi Bilgileri */}
+    <div className="flex items-center gap-3">
+      <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-xl">
+        <User className="w-6 h-6 text-blue-600" />
+      </div>
+      <div>
+        <p className="text-lg font-bold text-gray-900">{address.aliciAdiSoyadi}</p>
+        <div className="flex items-center gap-2 text-gray-700 mt-1">
+          <Phone className="w-4 h-4 text-blue-500" />
+          <span className="text-sm">{address.telefon}</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Adres */}
+    <div className="flex items-start gap-3 mt-2">
+      <MapPin className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+      <div className="flex-1">
+        <p className="text-gray-800">{address.adresSatir1}</p>
+        {address.adresSatir2 && <p className="text-gray-700 mt-1">{address.adresSatir2}</p>}
+        <div className="flex gap-2 mt-2 flex-wrap">
+          <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-xs font-semibold">{address.ilce}</span>
+          <span className="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">{address.sehir}</span>
+          <span className="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-xs font-semibold">{address.ulke}</span>
+        </div>
+      </div>
+    </div>
+  </label>
+))}
         </div>
         <div className="mt-6 bg-white border rounded-2xl p-5 shadow-lg">
   <label className="flex gap-3 cursor-pointer">

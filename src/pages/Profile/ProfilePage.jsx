@@ -105,6 +105,33 @@ const Profile = () => {
   const [refundModal, setRefundModal] = useState(null);
   const [toast, setToast] = useState(null);
   const [refundToastShown, setRefundToastShown] = useState(false);
+  const [cancelModal, setCancelModal] = useState(null);
+
+  const handleCancelOrder = async (orderId) => {
+    try {
+      await dispatch(cancelOrder(orderId)).unwrap();
+
+      setOrders((prev) =>
+        prev.map((o) =>
+          o.orderId === orderId
+            ? { ...o, status: "REFUND_PENDING" }
+            : o
+        )
+      );
+
+      setToast({
+        type: "success",
+        message: "Sipariş iptal edildi.",
+      });
+    } catch (err) {
+      setToast({
+        type: "error",
+        message: err || "Sipariş iptal edilemedi",
+      });
+    } finally {
+      setCancelModal(null);
+    }
+  };
 
   useEffect(() => {
     api.get("/alizone/getprofile").then((res) => setProfile(res.data));
@@ -127,36 +154,13 @@ useEffect(() => {
 
   return () => clearInterval(interval);
 }, [orders]);
-  const handleCancelOrder = async (orderId) => {
-  if (!window.confirm("Siparişi iptal etmek istediğine emin misin?")) return;
-
-  try {
-    await dispatch(cancelOrder(orderId)).unwrap();
-
-    setOrders((prev) =>
-      prev.map((o) =>
-        o.orderId === orderId
-          ? { ...o, status: "REFUND_PENDING" }
-          : o
-      )
-    );
-
-    setToast({
-      type: "success",
-      message:
-        "Sipariş iptal edildi. İade süreci başlatıldı (1–3 iş günü).",
-    });
-  } catch (err) {
-    setToast({
-      type: "error",
-      message: err || "Sipariş iptal edilemedi",
-    });
-  }
-};
+  
+ 
 
   if (!profile) return null;
 
   return (
+    <>
     <div className="max-w-3xl lg:max-w-4xl mx-auto
   px-4 sm:px-6
   pt-24 sm:pt-28 md:pt-32 lg:pt-36
@@ -281,13 +285,13 @@ const StatusIcon = status.icon;
   </button>
 )}
                 {(statusKey === "PENDING" || statusKey === "PAID") && (
-  <button
-    onClick={() => handleCancelOrder(order.orderId)}
-    className="mt-3 w-full px-4 py-2 text-sm rounded-lg
-    bg-rose-500 text-white hover:bg-rose-600 transition"
-  >
-    Siparişi İptal Et
-  </button>
+ <button
+  onClick={() => setCancelModal(order)}
+  className="mt-3 w-full px-4 py-2 text-sm rounded-lg
+  bg-rose-500 text-white hover:bg-rose-600 transition"
+>
+  Siparişi İptal Et
+</button>
 )}
                 </div>
               </details>
@@ -385,8 +389,41 @@ const StatusIcon = status.icon;
   />
 )}
     </div>
-    
+
+    {cancelModal && (
+  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4">
+    <div className="bg-white rounded-xl p-5 w-full max-w-sm shadow-lg">
+      <h3 className="text-lg font-bold text-slate-800 mb-2">
+        Sipariş iptal edilsin mi?
+      </h3>
+
+      <p className="text-sm text-slate-600 mb-4">
+        Bu işlem geri alınamaz.
+      </p>
+
+      <div className="flex gap-3">
+        <button
+          onClick={() => setCancelModal(null)}
+          className="flex-1 px-4 py-2 rounded-lg border"
+        >
+          Vazgeç
+        </button>
+
+        <button
+          onClick={() => handleCancelOrder(cancelModal.orderId)}
+          className="flex-1 px-4 py-2 rounded-lg
+          bg-rose-500 text-white hover:bg-rose-600"
+        >
+          İptal Et
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+   </> 
   );
+  
 };
+
 
 export default Profile;
