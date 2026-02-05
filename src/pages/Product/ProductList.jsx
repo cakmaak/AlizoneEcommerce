@@ -4,7 +4,7 @@ import ProductCard from "../../components/product/ProductCard";
 import { Filter, Check, ChevronDown } from "lucide-react";
 
 const CATEGORIES = ["SPLIT", "TICARI", "MULTISPLIT", "ISIPOMPASI", "MOBILKLIMA"];
-const BTUS = ["9000", "12000", "18000", "24000","48000"];
+const BTUS = ["9000", "12000", "18000", "24000","42000","48000"];
 const BRAND_PRIORITY = {
   BOSCH: 1,
   DAIKIN: 2,
@@ -48,7 +48,7 @@ const ProductList = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   const [filters, setFilters] = useState({
-  kategori: ["SPLIT"], 
+  kategori: [], 
   marka: [],
   btu: [],
   montajDahil: false,
@@ -82,6 +82,13 @@ const ProductList = () => {
     return true;
   })
   .sort((a, b) => {
+    
+    if (filters.kategori.length === 0) {
+      if (a.kategori === "SPLIT" && b.kategori !== "SPLIT") return -1;
+      if (a.kategori !== "SPLIT" && b.kategori === "SPLIT") return 1;
+    }
+
+    // Marka önceliği
     const pa = BRAND_PRIORITY[a.marka?.toUpperCase()] ?? 50;
     const pb = BRAND_PRIORITY[b.marka?.toUpperCase()] ?? 50;
     return pa - pb;

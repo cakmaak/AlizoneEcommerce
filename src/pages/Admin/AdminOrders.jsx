@@ -16,18 +16,18 @@ const AdminOrders = () => {
   }, [dispatch]);
 
   const filteredOrders = orders
-    ?.filter(o => o.siparisdurumu === "PAID")
-    ?.filter(o => {
-      const q = search.toLowerCase();
-      return (
-        o.id.toString().includes(q) ||
-        o.user.isim.toLowerCase().includes(q) ||
-        o.user.soyisim.toLowerCase().includes(q) ||
-        o.user.email.toLowerCase().includes(q) ||
-        o.user.telno?.includes(q)
-      );
-    });
-
+  ?.filter(o => o.siparisdurumu === "PAID") // sadece ödemesi tamamlanmış
+  ?.filter(o => {
+    const q = search.toLowerCase();
+    return (
+      o.id.toString().includes(q) ||
+      o.user.isim.toLowerCase().includes(q) ||
+      o.user.soyisim.toLowerCase().includes(q) ||
+      o.user.email.toLowerCase().includes(q) ||
+      o.user.telno?.includes(q)
+    );
+  })
+  ?.sort((a, b) => new Date(b.olusturmatarihi) - new Date(a.olusturmatarihi)); // en yeni en üstte
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">

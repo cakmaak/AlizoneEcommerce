@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const createOrder = async ({ addressId, contractsAccepted }) => {
   try {
-    const token = localStorage.getItem("token"); // auth varsa
+    const token = localStorage.getItem("token"); 
     const response = await axios.post(
       "https://alizone-production.up.railway.app/alizone/createorder",
-      { addressId, contractsAccepted }, // <-- buraya contractsAccepted ekledik
+      { addressId, contractsAccepted }, 
       {
         headers: {
           Authorization: `Bearer ${token}`,

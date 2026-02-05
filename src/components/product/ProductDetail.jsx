@@ -30,7 +30,7 @@ const ProductDetail = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeImage, setActiveImage] = useState(0);
-  const [error, setError] = useState("");
+ 
 
   
 
@@ -100,7 +100,7 @@ Fiyat: ₺${product.fiyat}
 
 `;
 
-  const mail = `mailto:alizoneklima@gmail.com
+  const mail = `mailto:info@alizoneklima.com
 ?subject=${encodeURIComponent(subject)}
 &body=${encodeURIComponent(body)}`;
 
@@ -341,7 +341,7 @@ Fiyat: ₺${product.fiyat}
       <InfoRow
         icon={Award}
         label="Uzaktan Kumanda"
-        value={product.digerOzellikler?.kontroller?.uzaktanKumanda ? "Var" : "Yok"}
+        value={"Var"}
       />
     </div>
     {/* BOYUTLAR */}
