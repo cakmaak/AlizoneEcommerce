@@ -18,7 +18,11 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const [toast, setToast] = useState(null);
 
-  const image = product.resimler?.[0] || "/placeholder.png";
+  // 🔥 SLIDER STATE
+  const [imgIndex, setImgIndex] = useState(0);
+  const images = product.resimler?.length
+    ? product.resimler
+    : ["/placeholder.png"];
 
   const handleAddToCart = async (e) => {
     e.stopPropagation();
@@ -67,9 +71,56 @@ Fiyat: ₺${product.fiyat}
   return (
     <div className="group bg-white rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition">
 
-      {/* IMAGE */}
-      <div className="relative h-72 bg-gradient-to-tr from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center overflow-hidden rounded-t-3xl">
+      {/* ================= IMAGE SLIDER ================= */}
+      <div className="relative h-72 bg-gradient-to-tr from-indigo-50 via-purple-50 to-pink-50 overflow-hidden rounded-t-3xl">
 
+        {/* SLIDER TRACK */}
+        <div
+          className="flex h-full transition-transform duration-500"
+          style={{ transform: `translateX(-${imgIndex * 100}%)` }}
+        >
+          {images.map((img, i) => (
+            <div key={i} className="min-w-full flex items-center justify-center">
+              <img
+                src={img}
+                alt={product.isim}
+                className="h-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* LEFT ARROW */}
+        {images.length > 1 && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setImgIndex((prev) =>
+                prev === 0 ? images.length - 1 : prev - 1
+              );
+            }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur rounded-full w-9 h-9 flex items-center justify-center shadow z-20"
+          >
+            ‹
+          </button>
+        )}
+
+        {/* RIGHT ARROW */}
+        {images.length > 1 && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setImgIndex((prev) =>
+                prev === images.length - 1 ? 0 : prev + 1
+              );
+            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur rounded-full w-9 h-9 flex items-center justify-center shadow z-20"
+          >
+            ›
+          </button>
+        )}
+
+        {/* BADGES */}
         <div className="absolute bottom-4 left-4 flex gap-2 z-20">
           {product.stokadeti !== undefined && product.stokadeti <= 3 && (
             <span className="bg-orange-500 text-white text-xs px-3 py-1 rounded-full">
@@ -83,8 +134,7 @@ Fiyat: ₺${product.fiyat}
           )}
         </div>
 
-        <img src={image} alt={product.isim} className="h-full object-contain" />
-
+        {/* BRAND LOGO */}
         {BRAND_LOGOS[product.marka?.toUpperCase()] && (
           <div className="absolute top-4 left-4 bg-white p-2 rounded-xl shadow z-20">
             <img
@@ -95,6 +145,7 @@ Fiyat: ₺${product.fiyat}
           </div>
         )}
 
+        {/* ENERGY */}
         {energyClass && (
           <div className="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full z-20">
             {energyClass}
@@ -102,7 +153,7 @@ Fiyat: ₺${product.fiyat}
         )}
       </div>
 
-      {/* CONTENT */}
+      {/* ================= CONTENT ================= */}
       <div className="p-4 md:p-5 space-y-3">
         <h3 className="text-[15px] md:text-base font-semibold text-gray-900 line-clamp-2 min-h-[40px]">
           {product.isim}

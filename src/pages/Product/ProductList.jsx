@@ -5,9 +5,10 @@ import { Filter, Check, ChevronDown } from "lucide-react";
 import HomepageSlider from "../../components/ui/HomepageShowcase";
 import HomepageShowcase from "../../components/ui/HomepageShowcase";
 import ProductIntro from "../../components/ui/ProductIntro";
+import PriceRange from "../../components/ui/PriceRange";
 
 const CATEGORIES = ["SPLIT", "TICARI", "MULTISPLIT", "ISIPOMPASI", "MOBILKLIMA"];
-const BTUS = ["9000", "12000", "18000", "24000","42000","48000"];
+const BTUS = ["9000", "12000", "18000", "24000","28000", "42000","48000"];
 const BRAND_PRIORITY = {
   BOSCH: 1,
   DAIKIN: 2,
@@ -57,6 +58,7 @@ const ProductList = () => {
   marka: [],
   btu: [],
   montajDahil: false,
+  fiyat: [0, 200000]
 });
   useEffect(() => {
     getAllProducts()
@@ -84,6 +86,7 @@ const ProductList = () => {
     if (filters.btu.length && !filters.btu.includes(String(p.btu)))
       return false;
     if (filters.montajDahil && !p.montajDahil) return false;
+    if (p.fiyat < filters.fiyat[0] || p.fiyat > filters.fiyat[1]) return false;
     return true;
   })
   .sort((a, b) => {
@@ -130,15 +133,13 @@ const ProductList = () => {
 
       {/* === FİLTRE PANELİ === */}
       <aside className={`lg:col-span-3 lg:pl-0 ${showFilters ? "block" : "hidden"} lg:block`}>
-        <div className="bg-white rounded-3xl shadow-xl p-4 space-y-6
-                        lg:sticky lg:top-28
-                        h-auto lg:h-[calc(100vh-8rem)]
-                        overflow-y-auto">
+        <div className="bg-white rounded-2xl shadow-lg p-4 space-y-5
+                lg:sticky lg:top-28">
           {/* Logo */}
           
 
           {/* Filtre Başlığı */}
-          <div className="flex items-center gap-2 text-indigo-600 font-semibold text-base tracking-wide">
+          <div className="flex items-center gap-2 text-indigo-500 font-bold text-sm uppercase tracking-wider">
             <Filter size={16} />
             Filtrele
           </div>
@@ -160,8 +161,33 @@ const ProductList = () => {
               <Checkbox key={b} label={`${b} BTU`} checked={filters.btu.includes(b)} onChange={() => toggleFilter("btu", b)} />
             ))}
           </FilterGroup>
+                        <PriceRange
+  value={filters.fiyat}
+  onChange={(val) =>
+    setFilters((prev) => ({ ...prev, fiyat: val }))
+  }
+/>
+<button
+  onClick={() =>
+    setFilters({
+      kategori: [],
+      marka: [],
+      btu: [],
+      montajDahil: false,
+      fiyat: [0, 200000],
+    })
+  }
+  className="w-full mt-3 py-2 rounded-lg bg-gray-100
+           text-gray-700 font-semibold text-xs
+           hover:bg-gray-200 transition"
+>
+  Tüm Filtreleri Temizle
+</button>
         </div>
+
+     
       </aside>
+ 
 
       {/* === ÜRÜNLER === */}
       <section className="lg:col-span-9">
@@ -174,9 +200,14 @@ const ProductList = () => {
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
+
+            
           </div>
+          
         )}
+        
       </section>
+      
 
     </div>
   </div>
@@ -184,18 +215,19 @@ const ProductList = () => {
   )
 };
 
+
 /* === ALT BİLEŞENLER === */
 
 const FilterGroup = ({ title, children }) => (
   <div>
     <h3 className="font-bold text-gray-800 mb-3">{title}</h3>
-    <div className="space-y-2">{children}</div>
+    <div className="grid grid-cols-2 gap-2">{children}</div>
   </div>
 );
 
 const Checkbox = ({ label, checked, onChange }) => (
   <label
-    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg cursor-pointer border transition text-sm
+    className={`flex items-center gap-2 px-2 py-1 rounded-md cursor-pointer border transition text-xs
       ${
         checked
           ? "bg-indigo-50 border-indigo-400 text-indigo-700 font-semibold"
@@ -203,7 +235,7 @@ const Checkbox = ({ label, checked, onChange }) => (
       }`}
   >
     <div
-      className={`w-4 h-4 rounded-sm flex items-center justify-center border
+      className={`w-3.5 h-3.5 rounded-sm flex items-center justify-center border
         ${checked ? "bg-indigo-600 text-white" : "bg-white"}`}
     >
       {checked && <Check size={10} />}
