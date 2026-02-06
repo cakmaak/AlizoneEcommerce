@@ -18,6 +18,16 @@ const AdminDashboard = () => {
         >
           ➕ Fiyat Güncelle
         </Link>
+
+        <Link
+          to="/admin/setname"
+          className="block w-fit px-6 py-3 bg-blue-600 text-white rounded-lg"
+        >
+          ➕ İsim Güncelle
+        </Link>
+
+        
+      
         <Link
   to="/admin/update-image"
   className="block w-fit px-6 py-3 bg-indigo-600 text-white rounded-lg"

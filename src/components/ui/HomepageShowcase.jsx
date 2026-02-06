@@ -5,8 +5,8 @@ const HomepageShowcase = () => {
 
   const slides = [
    { img: "1", path: "/products/22" },
-  { img: "2", path: "/products/15" },
-  { img: "0", path: "/products/1" },
+  { img: "2", path: "/products/1" },
+  { img: "0", path: "/products/15" },
   ];
 
   return (

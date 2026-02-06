@@ -27,6 +27,7 @@ import AdminRoute from "../routes/AdminRoute";
 import FakeBank from "../pages/fake/fakeBank";
 import OrderSuccess from "../pages/Orders/OrderSuccess";
 
+
 /* ADMIN */
 import AdminLayout from "../components/layout/AdminLayout";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
@@ -42,6 +43,7 @@ import ResetPassword from "../pages/Auth/ResetPassword";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import RefundOrder from "../pages/Admin/RefundOrder"
 import Setteklifal from "../pages/Admin/Setteklifal";
+import Setname from "../pages/Admin/SetName"
 
 
 
@@ -152,6 +154,7 @@ const AppRouter = () => {
   <Route path="orders" element={<AdminOrders />} />
   <Route path="refund-order" element={<RefundOrder />} />
   <Route path="set-teklif" element={<Setteklifal />} />
+  <Route path="setname" element={<Setname></Setname>} />
 </Route>
       </Routes>
     </HashRouter>

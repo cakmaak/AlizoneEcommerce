@@ -25,6 +25,7 @@ export const updateProductPrice = createAsyncThunk(
     }
   }
 );
+
 export const setProductTeklif = createAsyncThunk(
   "admin/setProductTeklif",
   async (productId, thunkAPI) => {
@@ -88,6 +89,23 @@ export const updateProductBtu = createAsyncThunk(
     }
   }
 );
+export const setname=createAsyncThunk(
+  "admin/setname",
+  async ({productId,name},thunkAPI) => {
+    try {
+      return await adminProductService.setname(productId,name);
+
+      
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || "isim güncellenemedi"
+      );
+
+      
+    }
+    
+  }
+)
 export const getAdminProducts = createAsyncThunk(
   "admin/getProducts",
   async (_, thunkAPI) => {
@@ -258,6 +276,18 @@ const adminProductSlice = createSlice({
   state.success = true;
 })
 .addCase(setProductTeklif.rejected, (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+})
+.addCase(setname.fulfilled,(state)=>{
+  state.isLoading=false;
+  state.success=true;
+})
+.addCase(setname.pending, (state) => {
+  state.isLoading = true;
+  state.success = false;
+})
+.addCase(setname.rejected, (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 })

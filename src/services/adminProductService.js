@@ -66,6 +66,18 @@ const startRefund = async (orderId) => {
   const res = await api.post(`/alizone/adminpanel/refund/${orderId}`);
   return res.data;
 };
+const setname=async (productId,name) => {
+  const res=await api.put(`/alizone/adminpanel/setname/${productId}`,
+    name,
+    {
+      headers:{
+        "Content-Type":"text/plain",
+      }
+    }
+  );
+  return res.data;
+  
+};
 
 const adminProductService = {
   addProduct,
@@ -77,7 +89,8 @@ const adminProductService = {
   getProducts,
   getOrders,
   startRefund,
-  setProductTeklif
+  setProductTeklif,
+  setname
 };
 
 
