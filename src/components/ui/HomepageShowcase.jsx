@@ -4,9 +4,9 @@ const HomepageShowcase = () => {
   const navigate = useNavigate();
 
   const slides = [
-    { img: "1", path: "https://alizoneecommerce.onrender.com/#/products/22" },
-    { img: "2", path: "https://alizoneecommerce.onrender.com/#/products/15" },
-    { img: "0", path: "https://alizoneecommerce.onrender.com/#/products/1" },
+   { img: "1", path: "/products/22" },
+  { img: "2", path: "/products/15" },
+  { img: "0", path: "/products/1" },
   ];
 
   return (
