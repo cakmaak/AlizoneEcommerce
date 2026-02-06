@@ -1,15 +1,27 @@
+import { useNavigate } from "react-router-dom";
+
 const HomepageShowcase = () => {
+  const navigate = useNavigate();
+
+  const slides = [
+    { img: "1", path: "https://alizoneecommerce.onrender.com/#/products/22" },
+    { img: "2", path: "https://alizoneecommerce.onrender.com/#/products/15" },
+    { img: "0", path: "https://alizoneecommerce.onrender.com/#/products/1" },
+  ];
+
   return (
     <section className="mb-10">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        {["1", "2", "0"].map((img) => (
+        {slides.map((item) => (
           <div
-            key={img}
-            className="relative rounded-3xl overflow-hidden shadow-xl group bg-white"
+            key={item.img}
+            onClick={() => navigate(item.path)}
+            className="relative rounded-3xl overflow-hidden shadow-xl
+                       group bg-white cursor-pointer"
           >
             <img
-              src={`/HomepageSlider/${img}.png`}
+              src={`/HomepageSlider/${item.img}.png`}
               alt="Alizone Klima"
               className="w-full h-[200px] md:h-[260px] lg:h-[300px]
                          object-contain
@@ -17,7 +29,7 @@ const HomepageShowcase = () => {
                          group-hover:scale-105"
             />
 
-            {/* Overlay text */}
+            {/* Overlay */}
             <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
 
             <div className="absolute bottom-4 left-4 right-4 text-white drop-shadow">
@@ -25,7 +37,7 @@ const HomepageShowcase = () => {
                 Profesyonel Klima Çözümleri
               </h3>
               <p className="text-sm opacity-90">
-                 • Yetkili Servis
+                • Yetkili Servis
               </p>
             </div>
           </div>
