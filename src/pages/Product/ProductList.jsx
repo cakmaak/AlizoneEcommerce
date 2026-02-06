@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { getAllProducts } from "../../services/productApi";
 import ProductCard from "../../components/product/ProductCard";
 import { Filter, Check, ChevronDown } from "lucide-react";
+import HomepageSlider from "../../components/ui/HomepageShowcase";
+import HomepageShowcase from "../../components/ui/HomepageShowcase";
+import ProductIntro from "../../components/ui/ProductIntro";
 
 const CATEGORIES = ["SPLIT", "TICARI", "MULTISPLIT", "ISIPOMPASI", "MOBILKLIMA"];
 const BTUS = ["9000", "12000", "18000", "24000","42000","48000"];
@@ -11,6 +14,8 @@ const BRAND_PRIORITY = {
   MITSUBISHI: 3,
   SAKURA: 99, 
 };
+
+
 const FunBanner = () => {
   const messages = [
     "❄️ Eviniz için en ferah çözümler!",
@@ -107,8 +112,9 @@ const ProductList = () => {
    <main className="pt-28 min-h-screen bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50">
   <div className="max-w-[1440px] mx-auto px-3 lg:px-6">
 
-    {/* === FUN BANNER === */}
-    <FunBanner />
+    {/* <HomepageSlider /> */}
+    <HomepageShowcase></HomepageShowcase>
+    <ProductIntro></ProductIntro>
 
     {/* === MOBİL FİLTRE BUTONU === */}
     <button
@@ -129,13 +135,7 @@ const ProductList = () => {
                         h-auto lg:h-[calc(100vh-8rem)]
                         overflow-y-auto">
           {/* Logo */}
-          <div className="flex justify-center mb-4">
-            <img
-              src="https://res.cloudinary.com/diyibvvua/image/upload/v1765462385/WhatsApp_Image_2025-11-16_at_14.48.31_be2ory.jpg"
-              alt="Logo"
-              className="w-50 object-contain"
-            />
-          </div>
+          
 
           {/* Filtre Başlığı */}
           <div className="flex items-center gap-2 text-indigo-600 font-semibold text-base tracking-wide">

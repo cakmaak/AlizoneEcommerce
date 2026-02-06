@@ -155,9 +155,46 @@ Fiyat: ₺${product.fiyat}
             </p>
           </div>
 
-          <div className="text-xl md:text-2xl font-semibold text-gray-900">
-            ₺{product.fiyat}
-          </div>
+         <div className="space-y-1">
+  <div className="bg-gradient-to-br from-indigo-50 to-sky-50 rounded-2xl p-5 space-y-3 border border-indigo-100">
+
+  {/* FİYAT */}
+  <div className="flex items-end gap-2">
+    <span className="text-3xl md:text-4xl font-extrabold text-gray-900">
+      ₺{product.fiyat}
+    </span>
+    <span className="text-sm text-slate-500">KDV Dahil</span>
+  </div>
+
+  {/* BTU + m² */}
+  <div className="flex flex-wrap gap-2 text-xs">
+    {product.kapasite?.sogutmaBtu && (
+      <span className="bg-sky-100 text-sky-700 px-3 py-1 rounded-full font-medium">
+        ❄️ {product.kapasite.sogutmaBtu.toLocaleString()} BTU
+      </span>
+    )}
+
+    {product.kapasite?.sogutmaBtu && (
+      <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium">
+        🏠 {
+          product.kapasite.sogutmaBtu <= 12000
+            ? "20–25 m²"
+            : product.kapasite.sogutmaBtu <= 18000
+            ? "30–35 m²"
+            : product.kapasite.sogutmaBtu <= 24000
+            ? "40–50 m²"
+            : "60 m²+"
+        }
+      </span>
+    )}
+  </div>
+
+  {/* FERAHLIK HİSSİ */}
+  <p className="text-sm text-slate-600 italic">
+    Yazın bunaltmaz, kışın üşütmez — ideal iç mekân konforu 🌬️
+  </p>
+</div>
+</div>
 
           {/* KAMPANYALAR */}
           <div className="space-y-2 bg-indigo-50 rounded-xl p-4">
@@ -167,29 +204,43 @@ Fiyat: ₺${product.fiyat}
             
           </div>
 
-        {isOutOfStock ? (
+       <div className="flex gap-3">
+  {/* DETAYLARI GÖR (GÖRSEL AMAÇLI) */}
   <button
-    disabled
-    className="w-full bg-gray-300 text-gray-600 py-3 rounded-xl font-semibold cursor-not-allowed"
+    className="flex-1 bg-slate-100 hover:bg-slate-200
+      text-slate-800 py-3 rounded-xl font-semibold transition"
   >
-    Stokta Yok
+    Detayları Gör
   </button>
-) : isSakura ? (
-  <button
-    onClick={handleTeklifMail}
-    className="w-full py-3 rounded-xl bg-gray-900 text-white
-      text-sm font-semibold hover:bg-gray-800 transition"
-  >
-    Teklif Al
-  </button>
-) : (
-  <button
-    onClick={handleAddToCart}
-    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold flex justify-center gap-2"
-  >
-    <ShoppingCart size={18} /> Sepete Ekle
-  </button>
-)}
+
+  {/* SAĞ BUTON */}
+  {isOutOfStock ? (
+    <button
+      disabled
+      className="flex-1 bg-gray-300 text-gray-600 py-3 rounded-xl font-semibold cursor-not-allowed"
+    >
+      Stokta Yok
+    </button>
+  ) : isSakura ? (
+    <button
+      onClick={handleTeklifMail}
+      className="flex-1 py-3 rounded-xl bg-gray-900 text-white
+        font-semibold hover:bg-gray-800 transition"
+    >
+      Teklif Al
+    </button>
+  ) : (
+    <button
+      onClick={handleAddToCart}
+      className="flex-1 bg-indigo-600 hover:bg-indigo-700
+        text-white py-3 rounded-xl font-semibold
+        flex justify-center items-center gap-2"
+    >
+      <ShoppingCart size={18} />
+      Sepete Ekle
+    </button>
+  )}
+</div>
         </div>
       </div>
 
