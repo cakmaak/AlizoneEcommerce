@@ -53,14 +53,42 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
     );
 
   if (items.length === 0)
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <p>Henüz adres yok. Lütfen önce bir adres ekleyin.</p>
-        <button onClick={() => navigate("/addresses/add")}>
-  Yeni Adres Ekle
-</button>
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
+      <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-10 max-w-md w-full text-center">
+
+        {/* ICON */}
+        <div className="mx-auto w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
+          <MapPin className="w-10 h-10 text-white" />
+        </div>
+
+        {/* TEXT */}
+        <h2 className="mt-6 text-2xl font-extrabold text-gray-900">
+          Henüz Adres Eklenmemiş 📭
+        </h2>
+
+        <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+          Sipariş verebilmek için en az bir adet teslimat adresi eklemeniz gerekiyor.
+        </p>
+        <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+          NOT : WEBSİTEMİZDE YALNIZA ANKARA İÇİN SATIŞIMIZ VARDIR.
+          ANKARA'DAN FARKLI BİR İL İÇİN SİPARİŞ VERMEK İSTERSENİZ İLETİŞİME GEÇEBİLİRSİNİZ.
+        </p>
+        
+        
+        
+
+        {/* BUTTON */}
+        <button
+          onClick={() => navigate("/addresses/add")}
+          className="mt-6 w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+        >
+          + Yeni Adres Ekle
+        </button>
+
       </div>
-    );
+    </div>
+  );
   const handleCreateOrder = async () => {
   if (!selectedAddressId) {
     showToast("error", "Lütfen bir teslimat adresi seçin");
