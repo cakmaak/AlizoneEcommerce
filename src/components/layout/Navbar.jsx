@@ -50,8 +50,15 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative flex items-center h-24">
 
-        <Link to="/" className="z-10 flex items-center gap-2">
-  <Snowflake
+           <Link to="/" className="z-10 flex items-center h-full">
+  <img
+  src="/logooo.png"
+  alt="Alizone Logo"
+  className="w-56 md:w-72 object-contain mt-2"
+/>
+</Link>
+    {/*    <Link to="/" className="z-10 flex items-center gap-2">
+   <Snowflake
     className={`
       w-5 h-5
       ${isHome ? "text-emerald-400" : "text-emerald-500"}
@@ -66,6 +73,7 @@ const Navbar = () => {
     ALİ<span className="text-emerald-400">ZONE</span>
   </span>
 </Link>
+*/}
 
 
 
