@@ -3,7 +3,7 @@ const FullPageLoader = () => {
     <div className="fixed inset-0 z-[9999] bg-white/80 backdrop-blur-md flex flex-col items-center justify-center">
       
       <img
-        src="https://res.cloudinary.com/diyibvvua/image/upload/v1765462385/WhatsApp_Image_2025-11-16_at_14.48.31_be2ory.jpg"
+        src="https://res.cloudinary.com/diyibvvua/image/upload/v1770716217/ChatGPT_Image_10_%C5%9Eub_2026_11_15_42_cqpnnt.png"
         alt="Loading"
         className="w-52 mb-6 animate-pulse"
       />
