@@ -83,6 +83,9 @@ const ProductDetail = ({ product }) => {
 };
 const isOutOfStock = product.stokadeti === 0;
 const isSakura = product.marka.toUpperCase() === "SAKURA";
+const isBosch3000 =
+  product.marka.toUpperCase() === "BOSCH" &&
+  product.model?.includes("3000");
 
 
 const handleTeklifMail = () => {
@@ -221,7 +224,7 @@ Fiyat: ₺${product.fiyat}
     >
       Stokta Yok
     </button>
-  ) : isSakura ? (
+  ) : isSakura||isBosch3000 ? (
     <button
       onClick={handleTeklifMail}
       className="flex-1 py-3 rounded-xl bg-gray-900 text-white
@@ -229,7 +232,9 @@ Fiyat: ₺${product.fiyat}
     >
       Teklif Al
     </button>
-  ) : (
+  ) 
+  : 
+  (
     <button
       onClick={handleAddToCart}
       className="flex-1 bg-indigo-600 hover:bg-indigo-700
