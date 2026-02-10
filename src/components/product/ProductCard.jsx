@@ -167,7 +167,7 @@ Fiyat: ₺${product.fiyat}
         )}
 
         <p className="text-sm text-gray-600">
-          Kredi kartına <strong>6 aya varan taksit</strong>
+          Kredi kartına <strong>9 aya varan taksit</strong>
         </p>
 
         <div>
