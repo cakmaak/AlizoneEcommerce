@@ -67,8 +67,8 @@ const Home = () => {
             </h1>
 
             <p className="text-lg text-slate-200 max-w-2xl mx-auto">
-              {/* Alizone Klima olarak Ankara klima satışı alanında konut ve iş yerleri için güvenilir çözümler sunuyoruz. Ücretsiz keşif, profesyonel montaj ve satış sonrası destekle yanınızdayız.*/}
-              TEST AMAÇLIDIR GERÇEK E TİCARETLE ALAKASI YOKTUR SATIŞ YAPILMAZ,YAPILAMAZ,ÖDEME SİSTEMİ TAMAMEN HAYAL ÜRÜNÜDÜR.
+               Alizone Klima olarak Ankara klima satışı alanında konut ve iş yerleri için güvenilir çözümler sunuyoruz. Ücretsiz keşif, profesyonel montaj ve satış sonrası destekle yanınızdayız
+              
             </p>
 
             <Link
