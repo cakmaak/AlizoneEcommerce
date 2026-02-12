@@ -56,24 +56,31 @@ const Home = () => {
 
         <div className="absolute inset-0 bg-black/40" />
 
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-6 pt-20">
-          <div className="max-w-4xl text-center text-white space-y-6">
-            <p className="text-xs tracking-[0.35em] uppercase text-emerald-300">
-              Alizone Klima
-            </p>
+        <div className="absolute top-20 md:top-6 left-1/2 -translate-x-1/2 z-30">
+  <img
+    src="/logooo.png"
+    alt="Alizone Klima Logo"
+    className="w-64 md:w-[420px] object-contain drop-shadow-2xl"
+  />
+</div>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 text-center text-white">
+          <div className="max-w-4xl text-center text-white space-y-4">
+         
+
+            <h1 className="text-2xl md:text-4xl font-bold leading-snug">
               Ankara Klima Satış & Profesyonel Montaj
             </h1>
 
-            <p className="text-lg text-slate-200 max-w-2xl mx-auto">
-               Alizone Klima olarak Ankara klima satışı alanında konut ve iş yerleri için güvenilir çözümler sunuyoruz. Ücretsiz keşif, profesyonel montaj ve satış sonrası destekle yanınızdayız
-              
-            </p>
+             <p className="text-sm md:text-base text-slate-200 max-w-xl mx-auto leading-relaxed">
+  Ankara klima satışı ve montaj hizmetlerinde güvenilir çözüm ortağınız.
+  Ücretsiz keşif ve profesyonel kurulum desteğiyle yanınızdayız.
+</p>
+            
 
             <Link
               to="/products"
-              className="inline-block rounded-full bg-emerald-500 px-8 py-3 font-semibold text-white hover:bg-emerald-600 transition"
+              className="inline-block mt-17 rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
             >
               Ürünleri İncele
             </Link>
