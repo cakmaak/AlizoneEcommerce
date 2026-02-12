@@ -87,9 +87,22 @@ const references = [
     ],
   },
   {
+    title: "Hz.HATİCE CAMİ-Yenimahalle-BOSCH Salon Tipi Klima ",
+    images: [
+      "/HaticeCami/6.jpeg",
+      "/HaticeCami/5.jpeg",
+      "/HaticeCami/4.jpeg",
+      "/HaticeCami/3.jpeg",
+      "/HaticeCami/2.jpeg",
+      "/HaticeCami/1.jpeg",
+    
+
+    ],
+  },
+  {
     title: "Palan Otel-Ulus-BOSCH Split Klima ",
     images: [
-      "/PALAN/1.jpeg",
+ "/PALAN/1.jpeg",
       "/PALAN/2.jpeg",
       "/PALAN/3.jpeg",
       "/PALAN/4.jpeg",
@@ -97,6 +110,7 @@ const references = [
       "/PALAN/6.jpeg",
       "/PALAN/7.jpeg",
       "/PALAN/8.jpeg",
+    
 
     ],
   },
