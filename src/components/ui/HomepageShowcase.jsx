@@ -37,7 +37,7 @@ const HomepageShowcase = () => {
                 Profesyonel Klima Çözümleri
               </h3>
               <p className="text-sm opacity-90">
-                • Yetkili Servis
+                
               </p>
             </div>
           </div>

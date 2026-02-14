@@ -7,6 +7,7 @@ import {Snowflake} from "lucide-react";
 const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [kvkkAccepted, setKvkkAccepted] = useState(false);
 
   const { isLoading, error } = useAppSelector((state) => state.auth);
 
@@ -58,7 +59,16 @@ const Register = () => {
       return;
     }
 
-    const payload = { ...form };
+    if (!kvkkAccepted) {
+  alert("KVKK metnini kabul etmelisiniz");
+  return;
+}
+
+  
+
+
+
+    const payload = { ...form,kvkkAccepted };
     dispatch(registerUser(payload))
       .unwrap()
       .then(() => {
@@ -99,7 +109,9 @@ const Register = () => {
           onChange={handleChange}
           required
           className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+          
         />
+        
       ))}
 
       <input
@@ -126,6 +138,14 @@ const Register = () => {
         <p className={strength.hasUppercase ? "text-green-600" : "text-red-600"}>• En az 1 büyük harf</p>
         <p className={strength.hasNumber ? "text-green-600" : "text-red-600"}>• En az 1 rakam</p>
       </div>
+        <label className="flex gap-2 mt-3">
+  <input
+    type="checkbox"
+    checked={kvkkAccepted}
+    onChange={(e) => setKvkkAccepted(e.target.checked)}
+  />
+  KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum
+</label>
 
       <button
         type="submit"
