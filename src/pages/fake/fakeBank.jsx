@@ -65,6 +65,10 @@ const FakeBank = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-6">
       <h1 className="text-3xl font-bold">FakeBank Ödeme</h1>
+      <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg text-center font-semibold">
+  Bu sayfa test amaçlıdır. Gerçek bir banka veya ödeme kuruluşu değildir.
+  Herhangi bir ödeme alınmamaktadır.
+</div>
       <p className="text-lg">
         Sipariş: #{orderId} | Tutar: {amount} ₺
       </p>

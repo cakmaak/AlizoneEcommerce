@@ -183,7 +183,7 @@ const Navbar = () => {
               onClick={() => setMobileOpen(false)}
               className="mt-6 px-6 py-3 rounded-full bg-emerald-500 text-white font-bold"
             >
-              Login
+              Giriş Yap
             </Link>
           )}
         </nav>

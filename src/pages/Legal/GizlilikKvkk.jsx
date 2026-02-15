@@ -22,9 +22,9 @@ const GizlilikKvkk = () => {
       <p>
         İnternet sitemiz üzerinden gerçekleştirilen işlemler kapsamında;
         ad-soyad, telefon numarası, e-posta adresi, teslimat adresi, fatura
-        bilgileri, sipariş bilgileri, <strong>IP adresi</strong>,{" "}
-        <strong>cihaz ve tarayıcı bilgileri (User-Agent)</strong> ile işlem
-        güvenliğine ilişkin log kayıtları işlenebilmektedir.
+        bilgileri, sipariş bilgileri, IP adresi, cihaz ve tarayıcı bilgileri
+        (User-Agent) ile işlem güvenliğine ilişkin log kayıtları
+        işlenebilmektedir.
       </p>
 
       <h2 className="font-bold mt-6">
@@ -32,9 +32,10 @@ const GizlilikKvkk = () => {
       </h2>
       <ul className="list-disc ml-6 mt-2 space-y-1">
         <li>Sipariş ve satış süreçlerinin yürütülmesi</li>
-        <li>Sözleşmenin kurulması ve ifası</li>
+        <li>Mesafeli satış sözleşmesinin kurulması ve ifası</li>
         <li>Faturalandırma ve muhasebe işlemleri</li>
-        <li>Teslimat ve lojistik süreçleri</li>
+        <li>Teslimat ve lojistik süreçlerinin yürütülmesi</li>
+        <li>Müşteri destek hizmetlerinin sağlanması</li>
         <li>Bilgi güvenliği ve dolandırıcılığın önlenmesi</li>
         <li>Sistem kayıtlarının (log) tutulması</li>
         <li>Yasal yükümlülüklerin yerine getirilmesi</li>
@@ -42,32 +43,56 @@ const GizlilikKvkk = () => {
 
       <h2 className="font-bold mt-6">4. Hukuki Sebep</h2>
       <p>
-        Kişisel verileriniz, KVKK’nın 5. maddesi uyarınca; sözleşmenin
-        kurulması ve ifası, veri sorumlusunun hukuki yükümlülüklerini yerine
-        getirmesi ve meşru menfaat hukuki sebeplerine dayanılarak
+        Kişisel verileriniz, KVKK’nın 5. maddesi uyarınca; bir sözleşmenin
+        kurulması veya ifasıyla doğrudan doğruya ilgili olması, veri
+        sorumlusunun hukuki yükümlülüklerini yerine getirmesi ve veri
+        sorumlusunun meşru menfaatleri hukuki sebeplerine dayanılarak
         işlenmektedir.
       </p>
 
-      <h2 className="font-bold mt-6">5. Ödeme Güvenliği</h2>
+      <h2 className="font-bold mt-6">5. Kişisel Verilerin Aktarılması</h2>
+      <p>
+        Kişisel verileriniz; yetkili kamu kurum ve kuruluşlarına, muhasebe ve
+        mali müşavirlere, kargo ve lojistik firmalarına ve lisanslı ödeme
+        kuruluşlarına ilgili mevzuat çerçevesinde aktarılabilmektedir.
+      </p>
+
+      <h2 className="font-bold mt-6">6. Ödeme Güvenliği</h2>
       <p>
         Ödeme işlemleri, lisanslı ödeme kuruluşları aracılığıyla
         gerçekleştirilmektedir. Kredi kartı bilgileri sistemlerimizde
         kaydedilmemekte ve saklanmamaktadır.
       </p>
 
-      <h2 className="font-bold mt-6">6. Saklama Süresi</h2>
+      <h2 className="font-bold mt-6">7. Kişisel Verilerin Toplanma Yöntemi</h2>
       <p>
-        Kişisel verileriniz, ilgili mevzuatta öngörülen süreler boyunca veya
-        işlenme amacının gerektirdiği süre kadar saklanmakta, sürenin
-        sonunda silinmekte veya anonim hale getirilmektedir.
+        Kişisel verileriniz; internet sitemiz, elektronik formlar ve çerezler
+        aracılığıyla otomatik veya kısmen otomatik yöntemlerle
+        toplanabilmektedir.
       </p>
 
-      <h2 className="font-bold mt-6">7. İlgili Kişinin Hakları</h2>
+      <h2 className="font-bold mt-6">8. Saklama Süresi</h2>
+      <p>
+        Kişisel verileriniz, ilgili mevzuatta öngörülen süreler boyunca veya
+        işlenme amacının gerektirdiği süre kadar saklanmakta; sürenin sona
+        ermesi halinde silinmekte, yok edilmekte veya anonim hale
+        getirilmektedir.
+      </p>
+
+      <h2 className="font-bold mt-6">9. İlgili Kişinin Hakları</h2>
       <p>
         KVKK’nın 11. maddesi uyarınca; kişisel verilerinizin işlenip
-        işlenmediğini öğrenme, düzeltilmesini veya silinmesini isteme,
-        işlenmesine itiraz etme ve zarar halinde tazminat talep etme
-        haklarına sahipsiniz.
+        işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme,
+        düzeltilmesini veya silinmesini isteme, işlenmesine itiraz etme ve
+        zarara uğramanız halinde tazminat talep etme haklarına sahipsiniz.
+      </p>
+
+      <h2 className="font-bold mt-6">10. Başvuru Usulü</h2>
+      <p>
+        KVKK kapsamındaki taleplerinizi, kimliğinizi tevsik edici belgeler ile
+        birlikte info@alizoneklima.com adresine iletebilirsiniz. Başvurular,
+        yazılı olarak veya ilgili mevzuatta belirtilen diğer yöntemlerle
+        değerlendirilecektir.
       </p>
     </div>
   );

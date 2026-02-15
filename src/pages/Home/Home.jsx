@@ -42,15 +42,15 @@ const Home = () => {
   return (
     <main className="bg-slate-50">
       {/* ================= HERO ================= */}
-      <section className="relative min-h-screen w-full overflow-hidden">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
+      <section className="relative h-[90vh] md:min-h-screen w-full overflow-hidden">
+      <video
+  ref={videoRef}
+  className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+  autoPlay
+  muted
+  loop
+  playsInline
+>
           <source src="/Alizone_iklimlendirme.mp4" type="video/mp4" />
         </video>
 
@@ -68,19 +68,22 @@ const Home = () => {
           <div className="max-w-4xl text-center text-white space-y-4">
          
 
-            <h1 className="text-2xl md:text-4xl font-bold leading-snug">
+            <h1 className="text-2xl md:text-4xl font-bold leading-snug mt-8">
               Ankara Klima Satış & Profesyonel Montaj
             </h1>
+             <p className="text-base sm:text-lg md:text-xl text-slate-100/90 max-w-2xl mx-auto">
+                  Alizone Klima olarak <strong>Ankara klima satışı</strong>{" "}
+                  alanında konut ve iş yerleri için güvenilir çözümler sunuyoruz.
+                  Ücretsiz keşif, profesyonel montaj ve satış sonrası destekle
+                  yanınızdayız.
+                </p>
 
-             <p className="text-sm md:text-base text-slate-200 max-w-xl mx-auto leading-relaxed">
-  Ankara klima satışı ve montaj hizmetlerinde güvenilir çözüm ortağınız.
-  Ücretsiz keşif ve profesyonel kurulum desteğiyle yanınızdayız.
-</p>
+             
             
 
             <Link
               to="/products"
-              className="inline-block mt-17 rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
+              className="inline-block mt-28 rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
             >
               Ürünleri İncele
             </Link>
