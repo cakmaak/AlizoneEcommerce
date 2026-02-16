@@ -1,8 +1,35 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef,useState } from "react";
 import { Link } from "react-router-dom";
+import { Award, ShieldCheck, Wrench, Zap } from "lucide-react";
+
 
 const Home = () => {
   const videoRef = useRef(null);
+
+  function Counter({ end }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 1500;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [end]);
+
+  return <span>{count.toLocaleString()}</span>;
+}
+
 
   useEffect(() => {
     const v = videoRef.current;
@@ -90,7 +117,68 @@ const Home = () => {
           </div>
         </div>
       </section>
+{/* ================= BAŞARI ================= */}
+<section className="relative py-28 bg-white overflow-hidden">
 
+  <div className="relative max-w-6xl mx-auto px-6 text-center">
+
+    <div className="flex justify-center mb-8">
+      <div className="bg-black/5 p-6 rounded-full border border-black/10 shadow-md">
+        <Award size={50} className="text-black" />
+      </div>
+    </div>
+
+    <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-gray-900">
+      2025 İç Anadolu <br />
+      <span className="text-gray-700">
+        Bosch Klima Devreye Alma Lideri
+      </span>
+    </h2>
+
+    <div className="w-24 h-[2px] bg-black mx-auto mb-10" />
+
+    <p className="text-gray-600 max-w-3xl mx-auto mb-16 text-lg">
+      2025 yılında İç Anadolu Bölgesi’nde Bosch klima devreye alma alanında
+      lider konuma ulaştık. Uzman teknik kadromuz ve güçlü servis altyapımızla
+      kalite standartlarımızı en üst seviyede sürdürüyoruz.
+    </p>
+
+    <div className="grid md:grid-cols-3 gap-12 mt-12">
+
+      <div className="flex flex-col items-center">
+        <Wrench className="text-gray-800 mb-3" size={30} />
+        <h3 className="text-xl font-semibold text-gray-900">
+          Sertifikalı Teknik Kadro
+        </h3>
+        <p className="text-gray-500 mt-2 text-sm max-w-xs">
+          Alanında uzman ve yetkili ekip ile güvenli devreye alma hizmeti.
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <ShieldCheck className="text-gray-800 mb-3" size={30} />
+        <h3 className="text-xl font-semibold text-gray-900">
+          Güvenilir Hizmet
+        </h3>
+        <p className="text-gray-500 mt-2 text-sm max-w-xs">
+          Satış öncesi ve sonrası destekle sürdürülebilir memnuniyet.
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <Zap className="text-gray-800 mb-3" size={30} />
+        <h3 className="text-xl font-semibold text-gray-900">
+          Profesyonel Devreye Alma
+        </h3>
+        <p className="text-gray-500 mt-2 text-sm max-w-xs">
+          Planlı ve titiz devreye alma süreçleri ile maksimum performans.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
       {/* ================= HİZMETLER ================= */}
       <section className="container mx-auto py-16 px-6">
         <div className="text-center space-y-3 mb-12">
