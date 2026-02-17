@@ -64,7 +64,7 @@ Fiyat: ₺${product.fiyat}
   const energyClass = product?.enerji?.sogutmaSinifi;
   const coolingBtu = product?.kapasite?.sogutmaBtu;
 
-  const isMontajDahil = product.marka?.toUpperCase() === "BOSCH";
+  const isMontajDahil = product.montage;
   const isOutOfStock = product.stokadeti === 0;
   const isTeklifOnly = product.teklifilesatilir === false;
 
