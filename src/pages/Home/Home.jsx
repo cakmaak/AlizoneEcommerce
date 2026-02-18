@@ -40,31 +40,27 @@ const Home = () => {
   }, []);
 
   const activityAreas = [
-    {
-      title: "Klimalar",
-      image:
-        "https://res.cloudinary.com/diyibvvua/image/upload/v1766052267/A_cozy_indoor_scene_featuring_children_playing_in_a_living_room._The_focus_is_on_a_modern_split_air_conditioner_prominently_mounted_on_the_wall._The_room_is_bright_with_natural_light_and_the_children_are_engaged_i_omgds1.jpg",
-      href: "/products?type=split",
-    },
-    {
-      title: "Mobil Klimalar",
-      image:
-        "https://res.cloudinary.com/diyibvvua/image/upload/v1766047423/A_portable_air_conditioner_in_a_modern_living_room_showing_the_appliance_working_quietly_and_efficiently._The_room_is_bright_and_airy_with_green_plants_in_the_background._s3a3zl.jpg",
-      href: "/products?type=mobile",
-    },
-    {
-      title: "Multi Split Klima",
-      image:
-        "https://res.cloudinary.com/diyibvvua/image/upload/v1766047574/A_modern_multi_split_air_conditioning_system_installed_in_a_bright_open_plan_living_area._The_indoor_units_are_mounted_on_the_walls_showcasing_a_sleek_design_with_sunlight_streaming_through_large_windows_and_decor_m0zyww.jpg",
-      href: "/products?type=multi-split",
-    },
-    {
-      title: "Isı Pompası",
-      image:
-        "https://res.cloudinary.com/diyibvvua/image/upload/v1766052360/%C4%B1s%C4%B1pompasiiii_dve5gm.jpg",
-      href: "/products?type=isipompasi",
-    },
-  ];
+  {
+    title: "Klimalar",
+    image: "/home/2.jpeg",
+    href: "/products?type=split",
+  },
+  {
+    title: "Mobil Klimalar",
+    image: "/home/3.jpeg",
+    href: "/products?type=mobile",
+  },
+  {
+    title: "Multi Split Klima",
+    image: "/home/4.jpeg",
+    href: "/products?type=multi-split",
+  },
+  {
+    title: "Isı Pompası",
+    image: "/home/1.jpeg",
+    href: "/products?type=isipompasi",
+  },
+];
 
   return (
     <main className="bg-slate-50">
