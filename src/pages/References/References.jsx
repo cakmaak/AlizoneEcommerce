@@ -100,17 +100,14 @@ const references = [
     ],
   },
   {
-    title: "Palan Otel-Ulus-BOSCH Split Klima ",
+    title: "FARAS 2 BULVAR KONUTLARI-BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
     images: [
- "/PALAN/1.jpeg",
-      "/PALAN/2.jpeg",
-      "/PALAN/3.jpeg",
-      "/PALAN/4.jpeg",
-      "/PALAN/5.jpeg",
-      "/PALAN/6.jpeg",
-      "/PALAN/7.jpeg",
-      "/PALAN/8.jpeg",
-    
+ "/Faraf/1.jpeg",
+      "/Faraf/2.jpeg",
+      "/Faraf/3.jpeg",
+      "/Faraf/4.jpeg",
+      "/Faraf/5.jpeg",
+   
 
     ],
   },
