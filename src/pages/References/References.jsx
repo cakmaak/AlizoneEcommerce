@@ -24,13 +24,17 @@ const references = [
     ],
   },
   {
-    title: "Bayındır Otel-Çankaya-BOSCH Split Klima ",
+    title: "Palan Otel-Ulus-BOSCH Split Klima ",
     images: [
-      "/Bayindir/1.jpg",
-      "/Bayindir/2.jpg",
-      "/Bayindir/3.jpg",
-      "/Bayindir/4.jpg",
-      "/Bayindir/5.jpg",
+      "/PALAN/1.jpeg",
+      "/PALAN/2.jpeg",
+      "/PALAN/3.jpeg",
+      "/PALAN/4.jpeg",
+      "/PALAN/5.jpeg",
+      "/PALAN/6.jpeg",
+      "/PALAN/7.jpeg",
+      "/PALAN/8.jpeg",
+      
     ],
   },
   {
