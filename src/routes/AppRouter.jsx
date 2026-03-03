@@ -26,6 +26,8 @@ import AdminRoute from "../routes/AdminRoute";
 
 import FakeBank from "../pages/fake/fakeBank";
 import OrderSuccess from "../pages/Orders/OrderSuccess";
+import OrderFail from "../pages/Orders/OrderFail";
+
 
 
 /* ADMIN */
@@ -44,6 +46,7 @@ import ForgotPassword from "../pages/Auth/ForgotPassword";
 import RefundOrder from "../pages/Admin/RefundOrder"
 import Setteklifal from "../pages/Admin/Setteklifal";
 import Setname from "../pages/Admin/SetName"
+
 
 
 
@@ -76,6 +79,7 @@ const AppRouter = () => {
 
           <Route path="/fakebank" element={<FakeBank />} />
           <Route path="/order/success/:orderId" element={<OrderSuccess />} />
+          <Route path="/order/fail/:orderId" element={<OrderFail/>} />
 
           {/* 🔒 PRIVATE */}
           <Route

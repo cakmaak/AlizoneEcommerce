@@ -31,7 +31,7 @@ const FakeBank = () => {
     .toString(CryptoJS.enc.Base64);
 
   try {
-    const res = await fetch("https://alizone-production.up.railway.app/payment/callback", {
+    const res = await fetch("https://api.alizoneklima.com/payment/callback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

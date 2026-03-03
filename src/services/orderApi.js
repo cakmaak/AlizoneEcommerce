@@ -1,10 +1,11 @@
 import axios from "axios";
+import api from "./api";
 
 export const createOrder = async ({ addressId, contractsAccepted }) => {
   try {
     const token = localStorage.getItem("token"); 
     const response = await axios.post(
-      "https://alizone-production.up.railway.app/alizone/createorder",
+      "https://api.alizoneklima.com/alizone/createorder",
       { addressId, contractsAccepted }, 
       {
         headers: {
@@ -23,10 +24,8 @@ export const cancelOrderApi = async (orderId) => {
   const token = localStorage.getItem("token");
 
   const res = await axios.post(
-    `https://alizone-production.up.railway.app/alizone/${orderId}/cancel`,
-    {
-      orderId
-    },
+    `https://api.alizoneklima.com/alizone/${orderId}/cancel`, 
+    null, 
     {
       headers: {
         Authorization: `Bearer ${token}`,

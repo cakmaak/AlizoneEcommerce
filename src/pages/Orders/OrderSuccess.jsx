@@ -1,68 +1,51 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { clearCartState } from "../../features/cart/cartSlice"; 
 
 const OrderSuccess = () => {
   const { orderId } = useParams();
-  const [paid, setPaid] = useState(false);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [statusData, setStatusData] = useState(null);
 
   useEffect(() => {
-    let interval;
+    const checkStatus = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        console.log("Token:", token);
+        const res = await axios.get(
+          `https://api.alizoneklima.com/alizone/status/${orderId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        console.log("Order status endpoint response:", res.data);
+        setStatusData(res.data); // bunu state'e atıyoruz
+      } catch (err) {
+        console.error("Order status error:", err.response?.status, err.message);
+      }
+    };
 
-   const fetchStatus = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get(
-  `https://alizone-production.up.railway.app/alizone/status/${orderId}`,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
-
-      if (res.data.paid) {
-  dispatch(clearCartState());
-  setPaid(true);
-  setLoading(false);
-  clearInterval(interval);
-} else {
-  setLoading(false);
-}
-  } catch (err) {
-    console.error("Order status error:", err.response?.status, err.message);
-    setLoading(false);
-  }
-};
-
-  fetchStatus();
-  interval = setInterval(fetchStatus, 1000);
-
-  return () => clearInterval(interval);
-}, [orderId, dispatch]);
-  if (loading) return <p>Yükleniyor...</p>;
-
-  if (!paid) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Ödemeniz henüz alınmadı...</p>
-      </div>
-    );
-  }
+    checkStatus();
+  }, [orderId]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white rounded-xl p-8 shadow-lg text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="bg-white rounded-xl p-8 shadow-lg text-center max-w-md">
         <h1 className="text-2xl font-bold mb-4">🎉 Siparişiniz Alındı!</h1>
-        <p className="mb-2">Sipariş Numaranız: #{orderId}</p>
-        <p className="mb-2">Ödemeniz başarıyla alındı ✅</p>
+        <p className="mb-2">Faturanız Ürün teslim edildikten sonra mail adresinize gönderilecektir</p>
+        <p className="mb-4">Ödemeniz başarıyla alındı ✅</p>
+
+        {statusData ? (
+          <p className="text-sm text-gray-500 mb-4">
+            Sipariş durumu: {JSON.stringify(statusData)}
+          </p>
+        ) : (
+          <p className="text-sm text-gray-400 mb-4">Faturanız Ürün teslim edildikten sonra mail adresinize gönderilecektir</p>
+        )}
+
+        <p className="text-sm text-gray-500 mb-4">
+          Sipariş detaylarını "Siparişlerim" sayfasında görebilirsiniz.
+        </p>
         <button
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded"
+          className="mt-2 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
           onClick={() => navigate("/profile")}
         >
           Siparişlerim

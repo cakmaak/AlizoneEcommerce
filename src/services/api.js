@@ -3,7 +3,7 @@ import { store } from "../app/store";
 import { startLoading, stopLoading } from "../features/ui/uiSlice";
 
 const api = axios.create({
-  baseURL: "https://alizone-production.up.railway.app",
+  baseURL: "https://api.alizoneklima.com",
   headers: {
     "Content-Type": "application/json",
   },
@@ -22,6 +22,8 @@ api.interceptors.request.use(
 
     if (!isPublic) {
       const token = localStorage.getItem("token");
+  
+
 
       if (!token) {
         return Promise.reject({ message: "Token yok, giriş yapın" });

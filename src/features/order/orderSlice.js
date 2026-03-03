@@ -16,9 +16,16 @@ export const cancelOrder = createAsyncThunk(
   "order/cancelOrder",
   async (orderId, { rejectWithValue }) => {
     try {
-      return { orderId, ...(await cancelOrderApi(orderId)) };
+      const res = await cancelOrderApi(orderId);
+      return {
+        orderId,
+        status: res.status,
+        message: res.message,
+      };
     } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
+      return rejectWithValue(
+        err.response?.data?.message || "Sipariş iptal edilemedi"
+      );
     }
   }
 );
@@ -49,16 +56,16 @@ const orderSlice = createSlice({
        .addCase(cancelOrder.pending, (state) => {
         state.loading = true;
       })
-      .addCase(cancelOrder.fulfilled, (state, action) => {
-        state.loading = false;
+.addCase(cancelOrder.fulfilled, (state, action) => {
+  state.loading = false;
 
-        const order = state.items.find(
-          (o) => o.orderId === action.payload.orderId
-        );
-        if (order) {
-          order.status = "CANCELLED";
-        }
-      })
+  const { orderId, status } = action.payload;
+
+  const order = state.items.find((o) => o.orderId === orderId);
+  if (order) {
+    order.status = status; // backend ne dediyse
+  }
+})
       .addCase(cancelOrder.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;

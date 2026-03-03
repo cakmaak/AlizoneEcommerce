@@ -88,15 +88,14 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
 
       </div>
     </div>
-  );
-  const handleCreateOrder = async () => {
+  );const handleCreateOrder = async () => {
   if (!selectedAddressId) {
     showToast("error", "Lütfen bir teslimat adresi seçin");
     return;
   }
 
   if (!termsAccepted) {
-   showToast("error", "KVKK ve Mesafeli Satış Sözleşmesini kabul etmelisiniz");
+    showToast("error", "KVKK ve Mesafeli Satış Sözleşmesini kabul etmelisiniz");
     return;
   }
 
@@ -108,13 +107,11 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
       contractsAccepted: true,
     });
 
-    const url = new URL(result.paymentLink);
-    const orderId = url.searchParams.get("orderId");
-    const amount = url.searchParams.get("amount");
+    // 🔥 BANKAYA YÖNLENDİR
+    window.location.href = result.paymentLink;
 
-    navigate(`/fakebank?orderId=${orderId}&amount=${amount}`);
   } catch (err) {
-   showToast("error", "Sipariş oluşturulamadı");
+    showToast("error", "Sipariş oluşturulamadı");
   } finally {
     setCreatingOrder(false);
   }

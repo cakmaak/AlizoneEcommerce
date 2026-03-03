@@ -80,15 +80,11 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="absolute top-20 md:top-6 left-1/2 -translate-x-1/2 z-30">
-  <img
-    src="/logooo.png"
-    alt="Alizone Klima Logo"
-    className="w-64 md:w-[420px] object-contain drop-shadow-2xl"
-  />
+  
 </div>
 
-       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 text-center text-white">
-          <div className="max-w-4xl text-center text-white space-y-4">
+       <div className="relative z-10 flex min-h-screen items-start justify-center px-6 pt-24 text-center text-white">
+  <div className="max-w-4xl text-center space-y-4">
          
 
             <h1 className="text-2xl md:text-4xl font-bold leading-snug mt-8">
@@ -106,7 +102,7 @@ const Home = () => {
 
             <Link
               to="/products"
-              className="inline-block mt-28 rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
+              className="inline-block mt-1 rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
             >
               Ürünleri İncele
             </Link>
