@@ -13,6 +13,7 @@ const references = [
       
     ],
   },
+  
   {
     title: "İncek Medical Park Hastanesi-BOSCH Salon Tipi Klima ",
     images: [
@@ -76,6 +77,23 @@ const references = [
       "/Tadotek/2.jpeg",
       "/Tadotek/3.jpeg",
      
+    ],
+  },
+
+  {
+    title: "Zirveden Batı -Yenimahalle-Multisplit 1 dış ünite 2 premium iç ünite ",
+    images: [
+      "/ZirvedenBati/1.jpeg",
+       "/ZirvedenBati/2.jpeg",
+       "/ZirvedenBati/3.jpeg",
+       "/ZirvedenBati/4.jpeg",
+        "/ZirvedenBati/5.jpeg",
+         "/ZirvedenBati/6.jpeg",
+          "/ZirvedenBati/7.jpeg",
+           "/ZirvedenBati/8.jpeg",
+            "/ZirvedenBati/9.jpeg",
+             "/ZirvedenBati/10.jpeg",
+      
     ],
   },
   
