@@ -37,6 +37,27 @@ const references = [
       
     ],
   },
+   {
+    title: "COLDWELL BANKER WEST - BOSCH SALON TİPİ KLİMA",
+    images: [
+      "/CW/1.jpeg",
+      "/CW/2.jpeg",
+      "/CW/3.jpeg",
+      "/CW/4.jpeg",
+      
+      
+    ],
+  },
+   {
+    title: "MERDAN OTOMOTİV-BOSCH SPLİT PREMIUM KLİMA",
+    images: [
+      "/MER/1.jpeg",
+      "/MER/2.jpeg",
+
+      
+      
+    ],
+  },
   {
     title: "Türk Burger-Pursaklar Şubesi-BOSCH Kaset Tipi Klima ",
     images: [
