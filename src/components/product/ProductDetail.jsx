@@ -36,46 +36,27 @@ const ProductDetail = ({ product }) => {
 
 
   
-  const handleAddToCart = async () => {
-  const token = localStorage.getItem("token");
-
-  // 🚫 GİRİŞ YOKSA
-  if (!token) {
-    window.dispatchEvent(
-      new CustomEvent("toast", {
-        detail: {
-          type: "error",
-          message: "Sepete eklemek için lütfen giriş yapınız",
-        },
-      })
-    );
-    return;
+ const handleAddToCart = async () => {
+  let guestId = localStorage.getItem("guestId");
+  if (!guestId) {
+    guestId = crypto.randomUUID();
+    localStorage.setItem("guestId", guestId);
   }
 
   try {
-    // ✅ GİRİŞ VAR → API
-    await dispatch(
-      addCartItem({ productId: product.id, quantity: 1 })
-    ).unwrap();
+    await dispatch(addCartItem({ productId: product.id, quantity: 1, guestId })).unwrap();
 
     window.dispatchEvent(
       new CustomEvent("toast", {
-        detail: {
-          type: "success",
-          message: "Ürün sepete eklendi",
-        },
+        detail: { type: "success", message: "Ürün sepete eklendi" },
       })
     );
   } catch (err) {
-    // ❌ STOK / BACKEND HATASI
     window.dispatchEvent(
       new CustomEvent("toast", {
         detail: {
           type: "error",
-          message:
-            err?.message ||
-            err?.response?.data?.message ||
-            "Stokta yeterli ürün yok",
+          message: err?.message || err?.response?.data?.message || "Stokta yeterli ürün yok",
         },
       })
     );

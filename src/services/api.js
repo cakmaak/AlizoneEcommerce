@@ -18,19 +18,19 @@ api.interceptors.request.use(
   "/alizone/product/getalldtoproduct",
   "/alizone/user/reset-password",
   "/alizone/user/forgot-password",
+  "/alizone/savebasketitem",
+  "/alizone/getbasket",
+  "/alizone/setquantity",
+  "/alizone/deleteitem"
 ].some(path => config.url.includes(path)) || config.url.match(/^\/alizone\/product\/getproduct/);
 
-    if (!isPublic) {
-      const token = localStorage.getItem("token");
-  
-
-
-      if (!token) {
-        return Promise.reject({ message: "Token yok, giriş yapın" });
-      }
-
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+   if (!isPublic) {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return Promise.reject({ message: "Token yok, giriş yapın" });
+  }
+  config.headers.Authorization = `Bearer ${token}`;
+}
 
     store.dispatch(startLoading());
     return config;

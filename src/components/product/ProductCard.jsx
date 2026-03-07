@@ -25,24 +25,25 @@ const ProductCard = ({ product }) => {
     : ["/placeholder.png"];
 
   const handleAddToCart = async (e) => {
-    e.stopPropagation();
-    const token = localStorage.getItem("token");
+  e.stopPropagation();
 
-    if (!token) {
-      setToast({ type: "error", message: "Sepete eklemek için giriş yapınız" });
-      return;
-    }
+  // guestId kontrolü / oluşturma
+  let guestId = localStorage.getItem("guestId");
+  if (!guestId) {
+    guestId = crypto.randomUUID();
+    localStorage.setItem("guestId", guestId);
+  }
 
-    try {
-      await dispatch(addCartItem({ productId: product.id, quantity: 1 })).unwrap();
-      setToast({ type: "success", message: "Ürün sepete eklendi" });
-    } catch (err) {
-      setToast({
-        type: "error",
-        message: err?.message || "Stokta yeterli ürün yok",
-      });
-    }
-  };
+  try {
+    await dispatch(addCartItem({ productId: product.id, quantity: 1, guestId })).unwrap();
+    setToast({ type: "success", message: "Ürün sepete eklendi" });
+  } catch (err) {
+    setToast({
+      type: "error",
+      message: err?.message || "Stokta yeterli ürün yok",
+    });
+  }
+};
 
   const handleTeklifMail = () => {
     const subject = `Teklif Talebi - ${product.isim}`;

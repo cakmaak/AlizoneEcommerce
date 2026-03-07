@@ -8,6 +8,7 @@ import { fetchCart } from "../../features/cart/cartSlice";
 import { addAddress } from "../../features/address/addressSlice";
 import { Link } from "react-router-dom";
 import { showToast } from "../../components/ui/showToast";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -16,6 +17,8 @@ import { showToast } from "../../components/ui/showToast";
 const AddressSelect = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { items = [], loading } = useSelector((state) => state.address);
 const { items: cartItems = [], totalPrice = 0 } = useSelector(
   (state) => state.cart
@@ -36,12 +39,18 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
   }
 };
 
+useEffect(() => {
+  dispatch(fetchAddresses());
+  dispatch(fetchCart());
 
-  useEffect(() => {
-    dispatch(fetchAddresses());
-    dispatch(fetchCart());
-  }, [dispatch]);
+  // Eğer navigate ile preselectedAddressId gelmişse seç
+  if (location.state?.preselectedAddressId) {
+    setSelectedAddressId(location.state.preselectedAddressId);
+  }
+}, [dispatch, location.state]);
 
+
+  
   const handleSelect = (id) => setSelectedAddressId(id);
 
 

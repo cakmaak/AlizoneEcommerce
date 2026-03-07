@@ -3,9 +3,12 @@ import { useAppSelector } from "../app/hooks";
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAppSelector((state) => state.auth);
-  return token ? children : <Navigate to="/login" />;
+  const guestId = localStorage.getItem("guestId");
+
+  // Token varsa veya guestId varsa geç
+  if (token || guestId) return children;
+
+  return <Navigate to="/login" />;
 };
-
-
 
 export default PrivateRoute;

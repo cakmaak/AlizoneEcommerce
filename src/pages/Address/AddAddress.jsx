@@ -23,6 +23,7 @@ const AddAddress = () => {
     firmaAdi: "",
     vergiNo: "",
     vergiDairesi: "",
+    faturaAdresi:""
   });
 
   const handleChange = (e) => {
@@ -31,10 +32,10 @@ const AddAddress = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await dispatch(addAddress(form));
-    navigate("/addresses");
-  };
+  e.preventDefault();
+  const result = await dispatch(addAddress(form)).unwrap(); 
+  navigate("/order/select-address", { state: { preselectedAddressId: result.id } });
+};
 
   return (
     <div className="min-h-screen bg-slate-50 px-6 py-20">
@@ -126,31 +127,39 @@ const AddAddress = () => {
           </section>
 
           {/* FATURA BİLGİLERİ */}
-          <section className="space-y-6">
-            <h3 className="text-xl font-bold text-slate-800">
-              Fatura Bilgileri
-            </h3>
+<section className="space-y-6">
+  <h3 className="text-xl font-bold text-slate-800">
+    Fatura Bilgileri
+  </h3>
 
-            {/* FATURA TİPİ */}
-            <div className="flex gap-4">
-              {["BIREYSEL", "KURUMSAL"].map((type) => (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() =>
-                    setForm((prev) => ({ ...prev, faturaTipi: type }))
-                  }
-                  className={`px-6 py-3 rounded-xl font-bold transition
-                    ${
-                      form.faturaTipi === type
-                        ? "bg-emerald-600 text-white"
-                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                    }`}
-                >
-                  {type === "BIREYSEL" ? "Bireysel" : "Kurumsal"}
-                </button>
-              ))}
-            </div>
+  {/* FATURA TİPİ */}
+  <div className="flex gap-4 mb-4">
+    {["BIREYSEL", "KURUMSAL"].map((type) => (
+      <button
+        key={type}
+        type="button"
+        onClick={() =>
+          setForm((prev) => ({ ...prev, faturaTipi: type }))
+        }
+        className={`px-6 py-3 rounded-xl font-bold transition
+          ${
+            form.faturaTipi === type
+              ? "bg-emerald-600 text-white"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+          }`}
+      >
+        {type === "BIREYSEL" ? "Bireysel" : "Kurumsal"}
+      </button>
+    ))}
+  </div>
+
+           <Input
+    label="Fatura Adresi (Opsiyonel)"
+    name="faturaAdresi"
+    value={form.faturaAdresi}
+    onChange={handleChange}
+    placeholder="Fatura için ayrı adres girebilirsiniz"
+  />
 
             {/* BİREYSEL */}
             {form.faturaTipi === "BIREYSEL" && (

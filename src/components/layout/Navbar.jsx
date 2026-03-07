@@ -18,9 +18,16 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+  const token = localStorage.getItem("token");
+  const guestId = localStorage.getItem("guestId");
+  
+  if (!guestId) {
+    const newGuestId = crypto.randomUUID();
+    localStorage.setItem("guestId", newGuestId);
+  }
 
+  dispatch(fetchCart());
+}, [dispatch]);
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);

@@ -4,6 +4,7 @@ import { fetchAddresses } from "../../features/address/addressSlice";
 import { Link } from "react-router-dom";
 import { fetchCart } from "../../features/cart/cartSlice";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 
 
@@ -32,17 +33,16 @@ const Cart = () => {
 
   const token = localStorage.getItem("token");
 
-  // ✅ Sepeti çekme
- useEffect(() => {
+  useEffect(() => {
   const token = localStorage.getItem("token");
-  if (token) {
-    dispatch(fetchCart())
-      .unwrap()
-      .catch((err) => {
-        console.log("Sepet getirilemedi:", err.response?.status);
-        // opsiyonel: kullanıcıyı login sayfasına yönlendirebilirsin
-      });
+  let guestId = localStorage.getItem("guestId");
+
+  if (!guestId) {
+    guestId = crypto.randomUUID();
+    localStorage.setItem("guestId", guestId); 
   }
+
+  dispatch(fetchCart()); 
 }, [dispatch]);
 
   const totalPrice = items.reduce(
@@ -64,25 +64,45 @@ const Cart = () => {
       </div>
     );
   }
-  const handleCheckout = async () => {  
-  if (!termsAccepted) return;
+ const handleCheckout = () => {
 
-  try {
-    const data = await createOrder({
-      addressId: selectedAddressId, 
-      contractsAccepted: termsAccepted,
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    Swal.fire({
+      title: "Siparişe Devam Et",
+      html: `
+        <div style="font-size:16px">
+          🛒 Siparişe devam edebilmek için giriş yapın veya üye olun.
+        </div>
+      `,
+      showCancelButton: true,
+      showDenyButton: true,
+
+      confirmButtonText: "Üye Girişi",
+      denyButtonText: "Üye Ol",
+      cancelButtonText: "İptal",
+
+      confirmButtonColor: "#10b981",
+      denyButtonColor: "#3b82f6",
+
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        navigate("/login?redirect=/order/select-address");
+      }
+
+      if (result.isDenied) {
+        navigate("/register?redirect=/order/select-address");
+      }
+
     });
 
-    if (data.paymentLink) {
-      window.location.href = data.paymentLink; 
-    } else {
-      alert("Sipariş oluşturulamadı.");
-    }
-  } catch (error) {
-    alert("Sipariş oluşturulamadı. Lütfen tekrar deneyin.");
+    return;
   }
-};
 
+  navigate("/order/select-address");
+};
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
       <div className="max-w-7xl mx-auto">
@@ -125,7 +145,7 @@ const Cart = () => {
             </div>
           
         <button
-  onClick={() => navigate("/order/select-address")}
+  onClick={handleCheckout}
   className="w-full mt-6 py-4 rounded-xl font-bold bg-emerald-500 text-white hover:bg-emerald-600 transition"
 >
   Ödemeye Geç
@@ -145,6 +165,7 @@ const Cart = () => {
 const CartItem = ({ item, dispatch }) => {
   const images = item.imageUrl || [];
   const [index, setIndex] = useState(0);
+  const guestId = localStorage.getItem("guestId");
 
   return (
     <div className="bg-white rounded-2xl shadow p-4 sm:p-5 
@@ -224,6 +245,7 @@ flex flex-col sm:flex-row gap-4 sm:gap-5">
                   updateCartQuantity({
                     basketItemId: item.basketItemId,
                     quantity: item.adet - 1,
+                    guestId
                   })
                 )
               }
@@ -240,6 +262,7 @@ flex flex-col sm:flex-row gap-4 sm:gap-5">
                   updateCartQuantity({
                     basketItemId: item.basketItemId,
                     quantity: item.adet + 1,
+                    guestId
                   })
                 )
               }

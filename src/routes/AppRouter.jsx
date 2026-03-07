@@ -80,9 +80,7 @@ const AppRouter = () => {
           <Route path="/fakebank" element={<FakeBank />} />
           <Route path="/order/success/:orderId" element={<OrderSuccess />} />
           <Route path="/order/fail/:orderId" element={<OrderFail/>} />
-
-          {/* 🔒 PRIVATE */}
-          <Route
+           <Route
             path="/cart"
             element={
               <PrivateRoute>
@@ -90,6 +88,9 @@ const AppRouter = () => {
               </PrivateRoute>
             }
           />
+
+          {/* 🔒 PRIVATE */}
+         
 
           <Route
             path="/profile"
