@@ -1,4 +1,4 @@
-import {HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 
 import Home from "../pages/Home/Home";
@@ -54,7 +54,7 @@ import Setname from "../pages/Admin/SetName"
 
 const AppRouter = () => {
   return (
-    <HashRouter basename="/">
+    <BrowserRouter >
       <Routes>
 
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
@@ -162,7 +162,7 @@ const AppRouter = () => {
   <Route path="setname" element={<Setname></Setname>} />
 </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
