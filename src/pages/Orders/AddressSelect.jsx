@@ -112,12 +112,13 @@ useEffect(() => {
     setCreatingOrder(true);
 
     const result = await createOrderApi({
+      
       addressId: selectedAddressId,
       contractsAccepted: true,
     });
 
     // 🔥 BANKAYA YÖNLENDİR
-    window.location.href = result.paymentLink;
+    //window.location.href = result.paymentLink;
 
   } catch (err) {
     showToast("error", "Sipariş oluşturulamadı");
