@@ -25,7 +25,7 @@ const references = [
     ],
   },
   {
-    title: "Yenimahalle Konuk Evi  BOSCH Split Klimalar ",
+    title: "Yenimahalle Zübeyde Hanım Konuk Evi - BOSCH Split Klimalar ",
     images: [
       "/konukev/1.jpeg",
       "/konukev/2.jpeg",
