@@ -4,7 +4,7 @@ import { ChevronDown, Building2 } from "lucide-react";
 const references = [
 
   {
-    title: "Akyurt Belediyesi-BOSCH Salon Tipi Klima ",
+    title: "Akyurt Belediyesi-BOSCH Salon Tipi Klimalar ",
     images: [
       "/AKYURT/1.jpg",
       "/AKYURT/2.jpg",
@@ -15,7 +15,7 @@ const references = [
   },
   
   {
-    title: "İncek Medical Park Hastanesi-BOSCH Salon Tipi Klima ",
+    title: "İncek Medical Park Hastanesi-BOSCH Salon Tipi Klimalar ",
     images: [
       "/INCEKMEDIKAL/1.jpeg",
       "/INCEKMEDIKAL/2.jpeg",
@@ -25,7 +25,31 @@ const references = [
     ],
   },
   {
-    title: "Palan Otel-Ulus-BOSCH Split Klima ",
+    title: "Yenimahalle Konuk Evi  BOSCH Split Klimalar ",
+    images: [
+      "/konukev/1.jpeg",
+      "/konukev/2.jpeg",
+      "/konukev/4.jpeg",
+      "/konukev/6.jpeg",
+      "/konukev/7.jpeg",
+      "/konukev/8.jpeg",
+      "/konukev/9.jpeg",
+      "/konukev/10.jpeg",
+      "/konukev/11.jpeg",
+      "/konukev/12.jpeg",
+      "/konukev/13.jpeg",
+      "/konukev/14.jpeg",
+      "/konukev/15.jpeg",
+      "/konukev/16.jpeg",
+      "/konukev/17.jpeg",
+
+
+
+      
+    ],
+  },
+  {
+    title: "Palan Otel-Ulus-BOSCH Split Klimalar ",
     images: [
       "/PALAN/1.jpeg",
       "/PALAN/2.jpeg",
@@ -39,7 +63,7 @@ const references = [
     ],
   },
    {
-    title: "COLDWELL BANKER WEST - BOSCH SALON TİPİ KLİMA",
+    title: "COLDWELL BANKER WEST - BOSCH SALON TİPİ KLİMA & Split Klima",
     images: [
       "/CW/1.jpeg",
       "/CW/2.jpeg",
@@ -60,7 +84,7 @@ const references = [
     ],
   },
   {
-    title: "Türk Burger-Pursaklar Şubesi-BOSCH Kaset Tipi Klima ",
+    title: "Türk Burger-Pursaklar Şubesi-BOSCH Kaset Tipi Klimalar ",
     images: [
       "/TURKBURGER/1.jpg",
       "/TURKBURGER/2.jpg",
@@ -98,7 +122,7 @@ const references = [
   },
   
   {
-    title: "Bayındır Otel-Çankaya-BOSCH Split Klima ",
+    title: "Bayındır Otel-Çankaya-BOSCH Split Klimalar ",
     images: [
       "/Bayindir/1.jpg",
       "/Bayindir/2.jpg",
@@ -120,7 +144,7 @@ const references = [
     ],
   },
   {
-    title: "Prosista Asma Tavan ve Profil Sistemleri-Yenimahalle Yapı Marketçileri Sitesi-Split Klima/BOSCH SPLİT TİPİ KLİMA ",
+    title: "Prosista Asma Tavan ve Profil Sistemleri-Yenimahalle Yapı Marketçileri Sitesi-Split Klima/BOSCH SPLİT TİPİ Klima ",
     images: [
       "/Prosista/1.jpeg",
       "/Prosista/2.jpeg",
@@ -130,7 +154,7 @@ const references = [
     ],
   },
   {
-    title: "Hz.HATİCE CAMİ-Yenimahalle-BOSCH Salon Tipi Klima ",
+    title: "Hz.HATİCE CAMİ-Yenimahalle-BOSCH Salon Tipi Klimalar ",
     images: [
       "/HaticeCami/6.jpeg",
       "/HaticeCami/5.jpeg",
