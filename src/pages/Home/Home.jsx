@@ -43,22 +43,22 @@ const Home = () => {
   {
     title: "Klimalar",
     image: "/home/2.jpeg",
-    href: "/products?type=split",
+    href: "/products",
   },
   {
     title: "Mobil Klimalar",
     image: "/home/3.jpeg",
-    href: "/products?type=mobile",
+    href: "/products",
   },
   {
     title: "Multi Split Klima",
     image: "/home/4.jpeg",
-    href: "/products?type=multi-split",
+    href: "/products",
   },
   {
     title: "Isı Pompası",
     image: "/home/1.jpeg",
-    href: "/products?type=isipompasi",
+    href: "/products",
   },
 ];
 
