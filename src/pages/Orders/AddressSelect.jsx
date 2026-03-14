@@ -118,7 +118,7 @@ useEffect(() => {
     });
 
     // 🔥 BANKAYA YÖNLENDİR
-    //window.location.href = result.paymentLink;
+    window.location.href = result.paymentLink;
 
   } catch (err) {
     showToast("error", "Sipariş oluşturulamadı");
