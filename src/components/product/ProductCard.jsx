@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [toast, setToast] = useState(null);
+  
 
   // 🔥 SLIDER STATE
   const [imgIndex, setImgIndex] = useState(0);
@@ -24,10 +25,9 @@ const ProductCard = ({ product }) => {
     ? product.resimler
     : ["/placeholder.png"];
 
-  const handleAddToCart = async (e) => {
+const handleAddToCart = async (e) => {
   e.stopPropagation();
 
-  // guestId kontrolü / oluşturma
   let guestId = localStorage.getItem("guestId");
   if (!guestId) {
     guestId = crypto.randomUUID();
@@ -36,12 +36,9 @@ const ProductCard = ({ product }) => {
 
   try {
     await dispatch(addCartItem({ productId: product.id, quantity: 1, guestId })).unwrap();
-    setToast({ type: "success", message: "Ürün sepete eklendi" });
+    setToast({ message: "Ürün sepete eklendi" }); // burası yeterli
   } catch (err) {
-    setToast({
-      type: "error",
-      message: err?.message || "Stokta yeterli ürün yok",
-    });
+    setToast({ message: err?.message || "Stokta yeterli ürün yok" });
   }
 };
 
@@ -218,7 +215,14 @@ Fiyat: ₺${product.fiyat}
 
         {toast && <Toast {...toast} onClose={() => setToast(null)} />}
       </div>
+      {toast && (
+  <Toast
+    message={toast.message}
+    onClose={() => setToast(null)}
+  />
+)}
     </div>
+    
   );
 };
 

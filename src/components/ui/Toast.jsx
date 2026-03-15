@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, ShoppingCart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const Toast = ({ type = "success", message, onClose }) => {
+const Toast = ({ message, onClose }) => {
   const [hide, setHide] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setHide(true), 2500);
@@ -13,20 +15,26 @@ const Toast = ({ type = "success", message, onClose }) => {
     };
   }, [onClose]);
 
+  const handleClick = () => {
+    navigate("/cart");
+    onClose();
+  };
+
   return (
     <div
-      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999]
-      px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3
-      text-white animate-slide-up
-      ${hide ? "animate-fade-out" : ""}
-      ${type === "success" ? "bg-emerald-600" : "bg-red-600"}`}
+      onClick={handleClick}
+      className={`
+        fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999]
+        px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 cursor-pointer
+        bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+        text-white font-semibold animate-slide-up
+        ${hide ? "animate-fade-out" : "opacity-100"}
+        transition-all duration-300
+      `}
     >
-      {type === "success" ? (
-        <CheckCircle className="w-5 h-5" />
-      ) : (
-        <XCircle className="w-5 h-5" />
-      )}
-      <span className="text-sm font-medium">{message}</span>
+      <CheckCircle className="w-6 h-6" />
+      <span className="text-sm md:text-base">{message}</span>
+      <ShoppingCart className="w-5 h-5 ml-auto" />
     </div>
   );
 };

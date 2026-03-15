@@ -46,6 +46,7 @@ import ForgotPassword from "../pages/Auth/ForgotPassword";
 import RefundOrder from "../pages/Admin/RefundOrder"
 import Setteklifal from "../pages/Admin/Setteklifal";
 import Setname from "../pages/Admin/SetName"
+import ScrollToTop from "../ScrollToTop"
 
 
 
@@ -54,8 +55,10 @@ import Setname from "../pages/Admin/SetName"
 
 const AppRouter = () => {
   return (
-    <BrowserRouter  >
+    <BrowserRouter>
+    <ScrollToTop />
       <Routes>
+      
 
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
         <Route element={<MainLayout />}>
@@ -162,6 +165,7 @@ const AppRouter = () => {
   <Route path="setname" element={<Setname></Setname>} />
 </Route>
       </Routes>
+      
     </BrowserRouter>
   );
 };
