@@ -54,7 +54,7 @@ import Setname from "../pages/Admin/SetName"
 
 const AppRouter = () => {
   return (
-    <BrowserRouter basename="/" >
+    <BrowserRouter  >
       <Routes>
 
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
