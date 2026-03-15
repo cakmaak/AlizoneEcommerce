@@ -14,6 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../../features/cart/cartSlice";
 import { useState } from "react";
+import Toast from "../ui/Toast";
 
 
 
@@ -28,7 +29,6 @@ const InfoRow = ({ icon: Icon, label, value }) => (
 
 const ProductDetail = ({ product }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [activeImage, setActiveImage] = useState(0);
  
 
@@ -36,7 +36,10 @@ const ProductDetail = ({ product }) => {
 
 
   
- const handleAddToCart = async () => {
+ const [toast, setToast] = useState(null);
+const navigate = useNavigate();
+
+const handleAddToCart = async () => {
   let guestId = localStorage.getItem("guestId");
   if (!guestId) {
     guestId = crypto.randomUUID();
@@ -46,20 +49,15 @@ const ProductDetail = ({ product }) => {
   try {
     await dispatch(addCartItem({ productId: product.id, quantity: 1, guestId })).unwrap();
 
-    window.dispatchEvent(
-      new CustomEvent("toast", {
-        detail: { type: "success", message: "Ürün sepete eklendi" },
-      })
-    );
+    // Toast tetikleme
+    setToast({
+      message: "Ürün sepete eklendi",
+      // navigate artık Toast içinde, ProductDetail'den prop geçmeye gerek yok
+    });
   } catch (err) {
-    window.dispatchEvent(
-      new CustomEvent("toast", {
-        detail: {
-          type: "error",
-          message: err?.message || err?.response?.data?.message || "Stokta yeterli ürün yok",
-        },
-      })
-    );
+    setToast({
+      message: err?.message || "Stokta yeterli ürün yok",
+    });
   }
 };
 const isOutOfStock = product.stokadeti === 0;
@@ -410,7 +408,9 @@ Fiyat: ₺${product.fiyat}
 
   </div>
 </details>
+{toast && <Toast message={toast.message} onClose={() => setToast(null)} />}
     </div>
+    
   );
 };
 
