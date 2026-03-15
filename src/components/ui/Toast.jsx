@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Toast = ({ message, onClose }) => {
   const [hide, setHide] = useState(false);
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const timer = setTimeout(() => setHide(true), 2500);
@@ -16,7 +16,7 @@ const Toast = ({ message, onClose }) => {
   }, [onClose]);
 
   const handleClick = () => {
-    navigate("/cart");
+   
     onClose();
   };
 
