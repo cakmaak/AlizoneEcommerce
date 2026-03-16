@@ -16,18 +16,23 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
+const getGuestId = () => {
+  let guestId = sessionStorage.getItem("guestId");
+  if (!guestId) {
+    guestId = crypto.randomUUID(); // yeni UUID üret
+    sessionStorage.setItem("guestId", guestId);
+  }
+  return guestId;
+};
+  
+
 
   useEffect(() => {
   const token = localStorage.getItem("token");
-  const guestId = localStorage.getItem("guestId");
-  
-  if (!guestId) {
-    const newGuestId = crypto.randomUUID();
-    localStorage.setItem("guestId", newGuestId);
-  }
-
+  const guestId = getGuestId(); // artık sessionStorage’dan alınıyor
   dispatch(fetchCart());
 }, [dispatch]);
+
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);

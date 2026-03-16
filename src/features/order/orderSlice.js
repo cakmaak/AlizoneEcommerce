@@ -3,9 +3,9 @@ import { createOrder as createOrderApi,cancelOrderApi, } from "../../services/or
 
 export const createOrder = createAsyncThunk(
   "order/createOrder",
-  async ({ addressId }, { rejectWithValue }) => {
+  async ({ addressId, contractsAccepted }, { rejectWithValue }) => {
     try {
-      const data = await createOrderApi({ addressId });
+      const data = await createOrderApi({ addressId, contractsAccepted });
       return data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);

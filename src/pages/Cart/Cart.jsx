@@ -35,11 +35,11 @@ const Cart = () => {
 
   useEffect(() => {
   const token = localStorage.getItem("token");
-  let guestId = localStorage.getItem("guestId");
+  let guestId = sessionStorage.getItem("guestId");
 
   if (!guestId) {
     guestId = crypto.randomUUID();
-    localStorage.setItem("guestId", guestId); 
+    sessionStorage.setItem("guestId", guestId); 
   }
 
   dispatch(fetchCart()); 
@@ -165,7 +165,7 @@ const Cart = () => {
 const CartItem = ({ item, dispatch }) => {
   const images = item.imageUrl || [];
   const [index, setIndex] = useState(0);
-  const guestId = localStorage.getItem("guestId");
+  const guestId = sessionStorage.getItem("guestId");
 
   return (
     <div className="bg-white rounded-2xl shadow p-4 sm:p-5 

@@ -3,7 +3,7 @@ import { useAppSelector } from "../app/hooks";
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAppSelector((state) => state.auth);
-  const guestId = localStorage.getItem("guestId");
+  const guestId = sessionStorage.getItem("guestId");
 
   // Token varsa veya guestId varsa geç
   if (token || guestId) return children;

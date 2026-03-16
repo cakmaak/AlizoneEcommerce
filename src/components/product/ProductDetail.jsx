@@ -40,10 +40,10 @@ const ProductDetail = ({ product }) => {
 const navigate = useNavigate();
 
 const handleAddToCart = async () => {
-  let guestId = localStorage.getItem("guestId");
+  let guestId = sessionStorage.getItem("guestId");
   if (!guestId) {
     guestId = crypto.randomUUID();
-    localStorage.setItem("guestId", guestId);
+    sessionStorage.setItem("guestId", guestId);
   }
 
   try {

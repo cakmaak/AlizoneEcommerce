@@ -5,7 +5,6 @@ import { createOrder as createOrderApi } from "../../services/orderApi";
 import { useNavigate } from "react-router-dom";
 import { MapPin, User, Phone, FileText, Building2, Home, ShoppingCart,Check } from "lucide-react";
 import { fetchCart } from "../../features/cart/cartSlice";
-import { addAddress } from "../../features/address/addressSlice";
 import { Link } from "react-router-dom";
 import { showToast } from "../../components/ui/showToast";
 import { useLocation } from "react-router-dom";
@@ -117,7 +116,7 @@ useEffect(() => {
       contractsAccepted: true,
     });
 
-    // 🔥 BANKAYA YÖNLENDİR
+    
     window.location.href = result.paymentLink;
 
   } catch (err) {
@@ -311,13 +310,13 @@ useEffect(() => {
       </p>
       <p>
         <p>
-  <Link to="/on-bilgilendirme" target="_blank" className="text-blue-600 underline font-medium">
+  <Link to="/on-bilgilendirme-formu" target="_blank" className="text-blue-600 underline font-medium">
     Ön Bilgilendirme Formu
   </Link>,{" "}
   <Link to="/mesafeli-satis-sozlesmesi" target="_blank" className="text-blue-600 underline font-medium">
     Mesafeli Satış Sözleşmesi
   </Link>,{" "}
-  <Link to="/iade-ve-cayma" target="_blank" className="text-blue-600 underline font-medium">
+  <Link to="/iade-cayma" target="_blank" className="text-blue-600 underline font-medium">
     İade ve Cayma Koşulları
   </Link>{" "}
   ile{" "}

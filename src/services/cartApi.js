@@ -1,9 +1,9 @@
 import api from "./api";
 
-let guestId = localStorage.getItem("guestId");
+let guestId = sessionStorage.getItem("guestId");
 if (!guestId) {
   guestId = crypto.randomUUID(); 
-  localStorage.setItem("guestId", guestId);
+  sessionStorage.setItem("guestId", guestId);
 }
 
 // ➕ Sepete ekle
@@ -18,14 +18,14 @@ export const addToCart = async ({ productId, quantity }) => {
 
 // 📦 Sepeti getir
 export const getCart = async () => {
-  let guestId = localStorage.getItem("guestId");
+  let guestId = sessionStorage.getItem("guestId");
   const response = await api.get("/alizone/getbasket", { params: { guestId } });
   return response.data;
 };
 
 // ❌ Sepetten sil (soft delete)
 export const removeFromCart = async (basketItemId) => {
-  const guestId = localStorage.getItem("guestId");
+  const guestId = sessionStorage.getItem("guestId");
 
   await api.delete(`/alizone/deleteitem/${basketItemId}`, {
     params: { guestId },
@@ -34,7 +34,7 @@ export const removeFromCart = async (basketItemId) => {
 
 // 🔁 Adet güncelle
 export const setCartQuantity = async ({ basketItemId, quantity }) => {
-  const guestId = localStorage.getItem("guestId"); // guestId al
+  const guestId = sessionStorage.getItem("guestId"); // guestId al
   const response = await api.put(
     `/alizone/setquantity/${basketItemId}?guestId=${guestId}`, // query param olarak ekle
     quantity, // body'de sadece adet

@@ -26,10 +26,10 @@ const ProductCard = ({ product }) => {
     : ["/placeholder.png"];
 
 const handleAddToCart = async () => {
-  let guestId = localStorage.getItem("guestId");
+  let guestId = sessionStorage.getItem("guestId");
   if (!guestId) {
     guestId = crypto.randomUUID();
-    localStorage.setItem("guestId", guestId);
+    sessionStorage.setItem("guestId", guestId);
   }
 
   try {

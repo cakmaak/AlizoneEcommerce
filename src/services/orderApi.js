@@ -1,12 +1,13 @@
 import axios from "axios";
-import api from "./api";
+
 
 export const createOrder = async ({ addressId, contractsAccepted }) => {
   try {
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
+    const guestId = sessionStorage.getItem("guestId");
     const response = await axios.post(
       "https://api.alizoneklima.com/alizone/createorder",
-      { addressId, contractsAccepted }, 
+      { addressId, contractsAccepted,guestId }, 
       {
         headers: {
           Authorization: `Bearer ${token}`,
