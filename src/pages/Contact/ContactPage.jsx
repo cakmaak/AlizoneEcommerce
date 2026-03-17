@@ -73,10 +73,10 @@ const ContactPage = () => {
               <div>
                 <p className="text-sm text-slate-500">Telefon</p>
                 <a
-                  href="tel:+905542309563"
+                  href="tel:+05323310976"
                   className="text-lg font-semibold text-slate-800 hover:text-emerald-600 transition"
                 >
-                  0 (554) 230 95 63
+                  0532 331 0976
                 </a>
               </div>
 
@@ -104,7 +104,7 @@ const ContactPage = () => {
           {/* SAĞ CTA */}
           <div className="flex flex-col justify-center gap-4">
             <a
-              href="tel:+905542309563"
+              href="tel:+05323310976"
               className="w-full text-center py-4 rounded-xl bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition"
             >
               Hemen Ara

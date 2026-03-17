@@ -29,9 +29,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items } = useSelector((state) => state.cart);
-  const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
   const token = localStorage.getItem("token");
