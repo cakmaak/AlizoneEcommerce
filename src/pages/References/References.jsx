@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { ChevronDown, Building2 } from "lucide-react";
 
+
+
 const references = [
 
+
   {
-    title: "Akyurt Belediyesi-BOSCH Salon Tipi Klimalar ",
+    title: "AKYURT BELEDİYESİ BOSCH SALON TİPİ KLİMALAR ",
     images: [
       "/AKYURT/1.jpg",
       "/AKYURT/2.jpg",
@@ -15,7 +18,7 @@ const references = [
   },
   
   {
-    title: "İncek Medical Park Hastanesi-BOSCH Salon Tipi Klimalar ",
+    title: "MEDİCAL PARK HASTANESİ -İNCEK- BOSCH SALON TİPİ KLİMALAR ",
     images: [
       "/INCEKMEDIKAL/1.jpeg",
       "/INCEKMEDIKAL/2.jpeg",
@@ -25,7 +28,7 @@ const references = [
     ],
   },
   {
-    title: "Yenimahalle Zübeyde Hanım Konuk Evi - BOSCH Split Klimalar ",
+    title: "ZÜBEYDE HANIM KONUK EVİ -YENİMAHALLE- BOSCH SPLİT KLİMALAR",
     images: [
       "/konukev/1.jpeg",
       "/konukev/2.jpeg",
@@ -49,7 +52,7 @@ const references = [
     ],
   },
   {
-    title: "Palan Otel-Ulus-BOSCH Split Klimalar ",
+    title: "PALAN OTEL -ULUS- BOSCH SPLİT KLİMALAR ",
     images: [
       "/PALAN/1.jpeg",
       "/PALAN/2.jpeg",
@@ -63,7 +66,7 @@ const references = [
     ],
   },
    {
-    title: "COLDWELL BANKER WEST - BOSCH SALON TİPİ KLİMA & Split Klima",
+    title: "COLDWELL BANKER WEST -YENİMAHALLE- BOSCH SALON TİPİ KLİMA & Split Klima",
     images: [
       "/CW/1.jpeg",
       "/CW/2.jpeg",
@@ -74,17 +77,14 @@ const references = [
     ],
   },
    {
-    title: "MERDAN OTOMOTİV-BOSCH SPLİT PREMIUM KLİMA",
+    title: "MERDAN OTOMOTİV -OSTİM- BOSCH SPLİT PREMIUM KLİMA",
     images: [
       "/MER/1.jpeg",
-      "/MER/2.jpeg",
-
-      
-      
+      "/MER/2.jpeg"
     ],
   },
   {
-    title: "Türk Burger-Pursaklar Şubesi-BOSCH Kaset Tipi Klimalar ",
+    title: "TÜRK BURGER PURSAKLAR ŞUBESİ -KEÇİÖREN- BOSCH KASET TİPİ KLİMALAR ",
     images: [
       "/TURKBURGER/1.jpg",
       "/TURKBURGER/2.jpg",
@@ -94,8 +94,19 @@ const references = [
     ],
   },
 
+  {
+    title: "AHSENLER MANZARA KONUTLARI -YENİMAHALLE- CARRİER SALON TİPİ KLİMA ",
+    images: [
+      "/AHSmanzara/1.jpeg",
+      "/AHSmanzara/2.jpeg",
+      "/AHSmanzara/3.jpeg",
+      "/AHSmanzara/4.jpeg",
+     
+    ],
+  },
+
    {
-    title: "Tado Teknoloji-Kahramankazan-SAKURA Salon Tipi Klima ",
+    title: "TADO TEKNOLOJİ -KAHRAMANKAZAN- SAKURA SALON TİPİ KLİMA",
     images: [
       "/Tadotek/1.jpeg",
       "/Tadotek/2.jpeg",
@@ -105,7 +116,7 @@ const references = [
   },
 
   {
-    title: "Zirveden Batı -Yenimahalle-Multisplit 1 dış ünite 2 premium iç ünite ",
+    title: "ZİRVEDEN BATI SİTESİ -YENİMAHALLE- BOSCH MULTİSPLİT 1 DIŞ ÜNİTE 2 PREMİUM İÇ ÜNİTE ",
     images: [
       "/ZirvedenBati/1.jpeg",
        "/ZirvedenBati/2.jpeg",
@@ -122,7 +133,7 @@ const references = [
   },
   
   {
-    title: "Bayındır Otel-Çankaya-BOSCH Split Klimalar ",
+    title: "BAYINDIR OTEL -ÇANKAYA- BOSCH SPLİT KLİMALAR",
     images: [
       "/Bayindir/1.jpg",
       "/Bayindir/2.jpg",
@@ -132,7 +143,7 @@ const references = [
     ],
   },
   {
-    title: "Arissa Point/Yenimahalle-Bosch 5 İç Ünite 1 Dış Ünite Multisplit Klima" ,
+    title: "ARİSSA POİNT -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 5 İÇ Ünite 1 DIŞ ÜNİTE" ,
     images: [
       "/Arissa/1.jpeg",
       "/Arissa/2.jpeg",
@@ -144,7 +155,7 @@ const references = [
     ],
   },
   {
-    title: "Prosista Asma Tavan ve Profil Sistemleri-Yenimahalle Yapı Marketçileri Sitesi-Split Klima/BOSCH SPLİT TİPİ Klima ",
+    title: "PROSİSTA ASMA TAVAN VE PROFİL SİSTEMLERİ -YENİMAHALLE YAPI MARKETÇİLERİ SİTESİ-  BOSCH SPLİT TİPİ KLİMA ",
     images: [
       "/Prosista/1.jpeg",
       "/Prosista/2.jpeg",
@@ -154,7 +165,7 @@ const references = [
     ],
   },
   {
-    title: "Hz.HATİCE CAMİ-Yenimahalle-BOSCH Salon Tipi Klimalar ",
+    title: "Hz.HATİCE CAMİ-YENİMAHALLE-BOSCH SALON TİPİ KLİMALAR",
     images: [
       "/HaticeCami/6.jpeg",
       "/HaticeCami/5.jpeg",
@@ -167,7 +178,7 @@ const references = [
     ],
   },
   {
-    title: "FARAS 2 BULVAR KONUTLARI-BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
+    title: "FARAS 2 BULVAR KONUTLARI -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
     images: [
  "/Faraf/1.jpeg",
       "/Faraf/2.jpeg",
@@ -179,7 +190,7 @@ const references = [
     ],
   },
   {
-    title: "Navlungo Ankara Şubesi-Yenimahalle-BOSCH Split Klima",
+    title: "NAVLUNGO Ankara Şubesi-YENİMAHALLE-BOSCH SPLİT KLİMA",
     images: [
       "/Navlunga/1.jpeg",
       "/Navlunga/2.jpeg",
@@ -190,7 +201,7 @@ const references = [
     ],
   },
   {
-    title: "Nilova Cafe-Kahramankazan-CARRIER Salon Tipi Klima ",
+    title: "NİLOVA CAFE-KAHRAMANKAZAN -CARRIER SALON TİPİ KLİMA",
     images: [
       "/Nilova/1.jpeg",
       "/Nilova/2.jpeg",
@@ -199,7 +210,7 @@ const references = [
     ],
   },
   {
-    title: "Kahramankazan Dis Hekimi Kliniği-BOSCH Split Klima ",
+    title: "DİŞ HEKİMİ KLİNİĞİ -KAHRAMANKAZAN- BOSCH SPLİT KLİMA",
     images: [
       "/Dis/1.jpeg",
       "/Dis/2.jpeg",
@@ -222,13 +233,27 @@ const references = [
 
 export default function References() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section className="min-h-screen bg-gray-50 py-16 px-4">
+    <section className="min-h-screen bg-gray-50 py-36 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-extrabold text-center mb-12">
-          Referanslarımız
-        </h1>
+        <div className="flex flex-col items-center mb-14">
+  <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-2xl shadow-md border">
+    
+    <img
+      src="/fav32.png"
+      alt="logo"
+      className="w-8 h-8"
+    />
+
+    <h1 className="text-2xl md:text-3xl font-extrabold text-gray-800 tracking-wide">
+      REFERANSLARIMIZ
+    </h1>
+  </div>
+
+  <div className="w-20 h-1 bg-blue-500 mt-4 rounded-full"></div>
+</div>
 
         <div className="space-y-6">
           {references.map((ref, index) => {
@@ -277,11 +302,12 @@ export default function References() {
       className="h-48 rounded-xl border bg-white flex items-center justify-center overflow-hidden"
     >
       <img
-        src={img}
-        alt={`${ref.title} ${i + 1}`}
-        className="w-full h-full object-contain"
-        loading="lazy"
-      />
+  src={img}
+  alt={`${ref.title} ${i + 1}`}
+  className="w-full h-full object-cover cursor-zoom-in"
+  loading="lazy"
+  onClick={() => setSelectedImage(img)}
+/>
     </div>
   ))}
 </div>
@@ -292,6 +318,17 @@ export default function References() {
           })}
         </div>
       </div>
+      {selectedImage && (
+  <div
+    onClick={() => setSelectedImage(null)}
+    className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+  >
+    <img
+      src={selectedImage}
+      className="max-w-[90%] max-h-[90%] rounded-xl"
+    />
+  </div>
+)}
     </section>
   );
 }
