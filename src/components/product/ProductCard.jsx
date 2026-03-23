@@ -10,7 +10,8 @@ const BRAND_LOGOS = {
   SAKURA: "https://res.cloudinary.com/diyibvvua/image/upload/v1765887110/sakuralogo_r2r0cg.jpg",
   CARRIER: "https://res.cloudinary.com/diyibvvua/image/upload/v1766229711/carrier_logo_broyda.png",
   ALTUS: "https://res.cloudinary.com/diyibvvua/image/upload/v1769003492/altus-logo-3_n4q9h9.png",
-  TCL: "https://res.cloudinary.com/diyibvvua/image/upload/v1769003574/tc1509t993-tcl-logo-tcl-logo-png-and-vector-logo-download_tkrwkj.png"
+  TCL: "https://res.cloudinary.com/diyibvvua/image/upload/v1769003574/tc1509t993-tcl-logo-tcl-logo-png-and-vector-logo-download_tkrwkj.png",
+  LG:"https://res.cloudinary.com/diyibvvua/image/upload/v1774274000/b87c3069e47bc70a48144e2bdb4508b2_vqkdkr.jpg"
 };
 
 const ProductCard = ({ product }) => {
