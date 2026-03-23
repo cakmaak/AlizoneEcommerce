@@ -8,7 +8,7 @@ import ProductIntro from "../../components/ui/ProductIntro";
 import PriceRange from "../../components/ui/PriceRange";
 import { useLocation,useNavigate } from "react-router-dom";
 
-const CATEGORIES = ["SPLIT", "TICARI", "MULTISPLIT", "ISIPOMPASI", "MOBILKLIMA"];
+const CATEGORIES = ["SPLIT", "SALON_TIPI", "MULTISPLIT", "KASET_TIPI","TICARI", "ISIPOMPASI", "MOBILKLIMA"];
 const BTUS = ["9000", "12000", "18000", "24000","28000", "42000","48000"];
 const BRAND_PRIORITY = {
   BOSCH: 1,
@@ -57,16 +57,14 @@ const ProductList = () => {
   const location = useLocation();
   const navigate = useNavigate()
 const queryParams = new URLSearchParams(location.search);
-const kategoriFromUrl = queryParams.get("kategori");
-const markaFromUrl = queryParams.get("marka");
-const btuFromUrl = queryParams.get("btu");
+const kategoriFromUrl = queryParams.get("kategori") ? queryParams.get("kategori").split(",") : [];
+const markaFromUrl = queryParams.get("marka") ? queryParams.get("marka").split(",") : [];
+const btuFromUrl = queryParams.get("btu") ? queryParams.get("btu").split(",") : [];
 
-
-
-  const [filters, setFilters] = useState({
-  kategori: kategoriFromUrl ? [kategoriFromUrl] : [],
-  marka: markaFromUrl ? [markaFromUrl] : [],
-  btu: btuFromUrl ? [btuFromUrl] : [],
+const [filters, setFilters] = useState({
+  kategori: kategoriFromUrl,
+  marka: markaFromUrl,
+  btu: btuFromUrl,
   montajDahil: false,
   fiyat: [0, 200000]
 });
@@ -77,57 +75,34 @@ const btuFromUrl = queryParams.get("btu");
   }, []);
 useEffect(() => {
   const params = new URLSearchParams(location.search);
+  const kategori = params.get("kategori") ? params.get("kategori").split(",") : [];
+  const marka = params.get("marka") ? params.get("marka").split(",") : [];
+  const btu = params.get("btu") ? params.get("btu").split(",") : [];
 
-  const kategori = params.get("kategori");
-  const marka = params.get("marka");
-  const btu = params.get("btu");
-
-  setFilters((prev) => {
-    const newFilters = {
-      ...prev,
-      kategori: kategori ? [kategori] : [],
-      marka: marka ? [marka] : [],
-      btu: btu ? [btu] : [],
-    };
-
-    // Eğer aynıysa update etme (çok önemli)
+  setFilters(prev => {
     if (
-      JSON.stringify(prev.kategori) === JSON.stringify(newFilters.kategori) &&
-      JSON.stringify(prev.marka) === JSON.stringify(newFilters.marka) &&
-      JSON.stringify(prev.btu) === JSON.stringify(newFilters.btu)
-    ) {
-      return prev;
-    }
+      JSON.stringify(prev.kategori) === JSON.stringify(kategori) &&
+      JSON.stringify(prev.marka) === JSON.stringify(marka) &&
+      JSON.stringify(prev.btu) === JSON.stringify(btu)
+    ) return prev;
 
-    return newFilters;
+    return { ...prev, kategori, marka, btu };
   });
 }, [location.search]);
-
-
   
 
   useEffect(() => {
   const params = new URLSearchParams();
 
-  if (filters.kategori.length === 1) {
-    params.set("kategori", filters.kategori[0]);
-  }
-
-  if (filters.marka.length === 1) {
-    params.set("marka", filters.marka[0]);
-  }
-
-  if (filters.btu.length === 1) {
-    params.set("btu", filters.btu[0]);
-  }
+  if (filters.kategori.length) params.set("kategori", filters.kategori.join(","));
+  if (filters.marka.length) params.set("marka", filters.marka.join(","));
+  if (filters.btu.length) params.set("btu", filters.btu.join(","));
 
   const newUrl = `/products?${params.toString()}`;
-
   if (location.search !== `?${params.toString()}`) {
     navigate(newUrl, { replace: true });
   }
 }, [filters.kategori, filters.marka, filters.btu]);
-
 
 
   const brands = [...new Set(products.map((p) => p.marka))];

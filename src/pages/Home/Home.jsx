@@ -43,7 +43,7 @@ const Home = () => {
   {
     title: "Klimalar",
     image: "/home/2.jpeg",
-    href: "/products?kategori=SPLIT"
+    href: "/products?kategori=SPLIT%2CMOBILKLIMA"
   },
   {
     title: "Mobil Klimalar",
@@ -56,8 +56,8 @@ const Home = () => {
     href: "/products?kategori=MULTISPLIT"
   },
   {
-    title: "Isı Pompası",
-    image: "/home/1.jpeg",
+    title: "Salon Tipi Klimalar",
+    image: "/home/8.png",
     href: "/products?kategori=ISIPOMPASI"
   },
 ];
