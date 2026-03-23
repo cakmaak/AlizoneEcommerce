@@ -47,7 +47,7 @@ const Home = () => {
   },
   {
     title: "Mobil Klimalar",
-    image: "/home/3.jpeg",
+    image: "/home/3.png",
     href: "/products?kategori=MOBILKLIMA"
   },
   {
