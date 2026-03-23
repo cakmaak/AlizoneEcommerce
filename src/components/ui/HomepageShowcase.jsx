@@ -4,10 +4,10 @@ const HomepageShowcase = () => {
   const navigate = useNavigate();
 
   const slides = [
-   { img: "1", path: "/products/22" },
-  { img: "2", path: "/products/1" },
-  { img: "0", path: "/products/15" },
-  ];
+  { img: "2", title: "Split Klimalar",path: "/products?kategori=SPLIT" },
+  { img: "4", title: "MULTİ SPLİT KLİMALAR",path: "/products?kategori=MULTISPLIT" },
+  { img: "0",  title: "TİCARİ KLİMALAR",path: "/products?kategori=TICARI" },
+];
 
   return (
     <section className="mb-10">
@@ -15,11 +15,11 @@ const HomepageShowcase = () => {
 
         {slides.map((item) => (
           <div
-            key={item.img}
-            onClick={() => navigate(item.path)}
-            className="relative rounded-3xl overflow-hidden shadow-xl
-                       group bg-white cursor-pointer"
-          >
+  key={item.img}
+  onClick={() => (window.location.href = item.path)}
+  className="relative rounded-3xl overflow-hidden shadow-xl
+             group bg-white cursor-pointer"
+>
             <img
               src={`/HomepageSlider/${item.img}.png`}
               alt="Alizone Klima"
@@ -34,8 +34,8 @@ const HomepageShowcase = () => {
 
             <div className="absolute bottom-4 left-4 right-4 text-white drop-shadow">
               <h3 className="font-bold text-lg">
-                Profesyonel Klima Çözümleri
-              </h3>
+  {item.title}
+</h3>
               <p className="text-sm opacity-90">
                 
               </p>
