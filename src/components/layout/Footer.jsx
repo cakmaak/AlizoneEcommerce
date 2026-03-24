@@ -105,10 +105,30 @@ const Footer = () => {
               info@alizoneklima.com
             </div>
 
-            <div className="flex items-center gap-2">
-              <MapPin size={16} />
-              Ankara, Türkiye
-            </div>
+            {/* 📍 KONUM + HARİTA */}
+           <div className="flex items-center gap-3">
+  <MapPin size={16} />
+
+  <div className="flex flex-col w-full">
+    <a
+      href="https://maps.google.com/?q=Alizone Klima Sincan Ankara"
+      target="_blank"
+      rel="noreferrer"
+      className="hover:text-white text-sm"
+    >
+      Ankara / Sincan – Alizone Klima
+    </a>
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1052.968255681768!2d32.561953538803!3d39.966521247879676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d33b552a1e520b%3A0x4be019ec2776dacd!2sAlizone%20Klima!5e1!3m2!1str!2str!4v1774341764125!5m2!1str!2str"
+      width="100%"
+      height="100"
+      style={{ border: 0 }}
+      loading="lazy"
+      className="rounded-lg mt-1"
+    ></iframe>
+  </div>
+</div>
           </div>
 
           {/* SOSYAL */}
@@ -116,12 +136,15 @@ const Footer = () => {
             <a href="#" aria-label="Facebook" className="hover:text-white transition">
               <Facebook />
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-white transition">
+            <a
+              href="https://www.instagram.com/alizoneklima/?hl=en"
+              aria-label="Instagram"
+              className="hover:text-white transition"
+            >
               <Instagram />
             </a>
           </div>
         </div>
-
       </div>
 
       {/* ALT BAR */}
