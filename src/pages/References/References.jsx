@@ -128,7 +128,7 @@ const references = [
   },
 
   {
-    title: "ZİRVEDEN BATI SİTESİ -YENİMAHALLE- BOSCH MULTİSPLİT 1 DIŞ ÜNİTE 2 PREMİUM İÇ ÜNİTE ",
+    title: "ZİRVEDEN BATI SİTESİ -YENİMAHALLE- BOSCH PREMİUM SPLİT KLİMALAR ",
     images: [
       "/ZirvedenBati/1.jpeg",
        "/ZirvedenBati/2.jpeg",
