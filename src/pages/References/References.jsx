@@ -220,6 +220,22 @@ const references = [
      
     ],
   },
+    {
+    title: "NUR OTOMOTİV  -YENİMAHALLE -  BOSCH SPLİT PREMİUM KLİMA ",
+    images: [
+      "/NUROTO/1.jpeg",
+      "/NUROTO/2.jpeg",
+  
+    ],
+  },
+      {
+    title: "BOSCH BAYİ İLKYERLEŞİM -YENİMAHALLE -  BOSCH SPLİT KLİMA ",
+    images: [
+      "/BSHOZ/1.jpeg",
+      "/BSHOZ/2.jpeg",
+  
+    ],
+  },
   {
     title: "DİŞ HEKİMİ KLİNİĞİ -KAHRAMANKAZAN- BOSCH SPLİT KLİMA",
     images: [
