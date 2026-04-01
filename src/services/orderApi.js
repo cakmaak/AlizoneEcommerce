@@ -1,26 +1,28 @@
 import axios from "axios";
 
 
-export const createOrder = async ({ addressId, contractsAccepted }) => {
+export const createOrder = async (payload) => {
   try {
     const token = localStorage.getItem("token");
-    const guestId = sessionStorage.getItem("guestId");
+
     const response = await axios.post(
       "https://api.alizoneklima.com/alizone/createorder",
-      { addressId, contractsAccepted,guestId }, 
+      payload,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: token ? `Bearer ${token}` : undefined,
           "Content-Type": "application/json",
         },
       }
     );
-    return response.data; 
+
+    return response.data;
   } catch (err) {
     console.error("Sipariş oluşturulamadı:", err);
     throw err;
   }
 };
+
 export const cancelOrderApi = async (orderId) => {
   const token = localStorage.getItem("token");
 

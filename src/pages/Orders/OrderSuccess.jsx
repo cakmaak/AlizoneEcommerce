@@ -11,44 +11,49 @@ const OrderSuccess = () => {
     const checkStatus = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log("Token:", token);
+
+        // --- DEĞİŞİKLİK BURADA BAŞLIYOR ---
+        const config = {};
+        
+        // Eğer token varsa (null veya undefined değilse) header'ı ekle
+        if (token && token !== "null") {
+          config.headers = { Authorization: `Bearer ${token}` };
+        }
+        // --- DEĞİŞİKLİK BURADA BİTİYOR ---
+
+
+
         const res = await axios.get(
           `https://api.alizoneklima.com/alizone/status/${orderId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          config // { headers: ... } yerine direkt config objesini veriyoruz
         );
-        console.log("Order status endpoint response:", res.data);
-        setStatusData(res.data); // bunu state'e atıyoruz
+        
+        console.log("Response:", res.data);
+        setStatusData(res.data);
       } catch (err) {
-        console.error("Order status error:", err.response?.status, err.message);
+        console.error("401 Hatası Alındı! Token kontrol et:", err.response?.status);
       }
     };
 
-    checkStatus();
+    if (orderId) checkStatus();
   }, [orderId]);
+
+  // Token yoksa misafirdir
+  const isGuest = !localStorage.getItem("token");
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white rounded-xl p-8 shadow-lg text-center max-w-md">
         <h1 className="text-2xl font-bold mb-4">🎉 Siparişiniz Alındı!</h1>
-        <p className="mb-2">Faturanız Ürün teslim edildikten sonra mail adresinize gönderilecektir</p>
-        <p className="mb-4">Ödemeniz başarıyla alındı ✅</p>
+        <p className="mb-2">Ödemeniz başarıyla alındı ✅</p>
+        <p className="text-sm text-gray-500 mb-6">Faturanız mail adresinize gönderilecektir.</p>
 
-        {statusData ? (
-          <p className="text-sm text-gray-500 mb-4">
-            Sipariş durumu: {JSON.stringify(statusData)}
-          </p>
-        ) : (
-          <p className="text-sm text-gray-400 mb-4">Faturanız Ürün teslim edildikten sonra mail adresinize gönderilecektir</p>
-        )}
-
-        <p className="text-sm text-gray-500 mb-4">
-          Sipariş detaylarını "Siparişlerim" sayfasında görebilirsiniz.
-        </p>
+        {/* Buton Yönlendirmesi: Misafirse Ana Sayfaya, Üyeyse Profile */}
         <button
-          className="mt-2 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          onClick={() => navigate("/profile")}
+          className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          onClick={() => navigate(isGuest ? "/" : "/profile")}
         >
-          Siparişlerim
+          {isGuest ? "Ana Sayfaya Dön" : "Siparişlerim"}
         </button>
       </div>
     </div>

@@ -12,25 +12,12 @@ const api = axios.create({
 // REQUEST INTERCEPTOR
 api.interceptors.request.use(
   (config) => {
-    const isPublic = [
-  "/alizone/login",
-  "/alizone/user/signup",
-  "/alizone/product/getalldtoproduct",
-  "/alizone/user/reset-password",
-  "/alizone/user/forgot-password",
-  "/alizone/savebasketitem",
-  "/alizone/getbasket",
-  "/alizone/setquantity",
-  "/alizone/deleteitem"
-].some(path => config.url.includes(path)) || config.url.match(/^\/alizone\/product\/getproduct/);
+    const token = localStorage.getItem("token");
 
-   if (!isPublic) {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    return Promise.reject({ message: "Token yok, giriş yapın" });
-  }
-  config.headers.Authorization = `Bearer ${token}`;
-}
+    // Eğer token varsa, her isteğe ekle (Backend artık optional auth destekliyor)
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
 
     store.dispatch(startLoading());
     return config;

@@ -33,16 +33,21 @@ export const removeFromCart = async (basketItemId) => {
 };
 
 // 🔁 Adet güncelle
+// cartService.js (veya api.js içindeki o kısım)
 export const setCartQuantity = async ({ basketItemId, quantity }) => {
-  const guestId = sessionStorage.getItem("guestId"); // guestId al
-  const response = await api.put(
-    `/alizone/setquantity/${basketItemId}?guestId=${guestId}`, // query param olarak ekle
-    quantity, // body'de sadece adet
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const token = localStorage.getItem("token");
+  const guestId = sessionStorage.getItem("guestId");
+  const finalGuestId = token ? "" : (guestId || "no-id");
+
+  // URL'i oluştur
+  const url = `/alizone/setquantity/${basketItemId}?guestId=${finalGuestId}`;
+
+  // BODY: Eğer backend sadece bir sayı bekliyorsa düz quantity gönder, 
+  // ama JSON olarak gitmesi için interceptor'ın varsayılanını kullanalım.
+  const response = await api.put(url, quantity); 
+  
+  // EĞER yukarıdaki 400/500 verirse, backend bir nesne bekliyor demektir:
+  // const response = await api.put(url, { quantity: quantity }); 
+
   return response.data;
 };

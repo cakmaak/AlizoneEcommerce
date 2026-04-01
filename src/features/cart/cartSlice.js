@@ -51,13 +51,19 @@ export const deleteCartItem = createAsyncThunk(
 
 // Adet güncelle
 export const updateCartQuantity = createAsyncThunk(
-  "cart/updateCartQuantity",
-  async ({ basketItemId, quantity, guestId }, thunkAPI) => {
+  "cart/updateQuantity",
+  async ({ basketItemId, adet }, { dispatch, rejectWithValue }) => {
     try {
-      await setCartQuantity({ basketItemId, quantity, guestId });
-      return { basketItemId, quantity };
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+      // Buradaki parametre isminin "quantity" olduğundan emin ol (setCartQuantity öyle bekliyor)
+      await setCartQuantity({ basketItemId, quantity: adet });
+      
+      // ✅ API başarılı olursa sepeti tekrar çek ki isimler ve adetler güncellensin
+      dispatch(fetchCart()); 
+      return { basketItemId, adet };
+    } catch (err) {
+      // Hata detayını konsola bas ki Java'da ne patladı görelim
+      console.error("Backend Hatası:", err.response?.data);
+      return rejectWithValue(err.response?.data);
     }
   }
 );
@@ -126,17 +132,18 @@ const cartSlice = createSlice({
       })
 
       // UPDATE
-      .addCase(updateCartQuantity.fulfilled, (state, action) => {
-        const item = state.items.find(
-          (i) => i.basketItemId === action.payload.basketItemId
-        );
-        if (item) {
-          state.totalPrice +=
-            (Number(action.payload.quantity) - Number(item.adet)) *
-            Number(item.fiyat);
-          item.adet = action.payload.quantity;
-        }
-      });
+.addCase(updateCartQuantity.fulfilled, (state, action) => {
+  const item = state.items.find(
+    (i) => i.basketItemId === action.payload.basketItemId
+  );
+  if (item) {
+    const newQty = Number(action.payload.adet); // 'quantity' değil 'adet'
+    const oldQty = Number(item.adet);
+    
+    state.totalPrice += (newQty - oldQty) * Number(item.fiyat);
+    item.adet = newQty;
+  }
+})
   },
 });
 

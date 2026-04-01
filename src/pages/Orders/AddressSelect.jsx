@@ -23,12 +23,38 @@ const { items: cartItems = [], totalPrice = 0 } = useSelector(
   (state) => state.cart
 );
 
+
+
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const [creatingOrder, setCreatingOrder] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [orderId, setOrderId] = useState(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [guestAddress, setGuestAddress] = useState({
+  aliciAdiSoyadi: "",
+  adresSatir1: "",
+  adresSatir2: "",
+  sehir: "ANKARA",
+  ilce: "",
+  postaKodu: "",
+  ulke: "Türkiye",
+  telefon: "",
+  faturaTipi: "BIREYSEL",
+  faturaAdiSoyadi: "",
+  tcKimlikNo: "",
+  firmaAdi: null,
+  vergiNo: null,
+  vergiDairesi: null,
+  FaturaAdresi: null
+});
+const [guestName, setGuestName] = useState("");
+const [guestEmail, setGuestEmail] = useState("");
+const [guestPhone, setGuestPhone] = useState("");
+const [adres1, setAdres1] = useState("");
+const [ilce, setIlce] = useState("");
+
+
 
   const handleToggleSelect = (id) => {
   if (selectedAddressId === id) {
@@ -42,15 +68,22 @@ useEffect(() => {
   dispatch(fetchAddresses());
   dispatch(fetchCart());
 
-  // Eğer navigate ile preselectedAddressId gelmişse seç
+  // Eğer Cart’dan gelen guestInfo varsa state’i güncelle
+  if (location.state?.guestInfo) {
+    const gi = location.state.guestInfo;
+    setGuestName(gi.guestName);
+    setGuestEmail(gi.guestEmail);
+    setGuestPhone(gi.guestPhone);
+    setGuestAddress(gi.address);
+  }
+
   if (location.state?.preselectedAddressId) {
     setSelectedAddressId(location.state.preselectedAddressId);
   }
 }, [dispatch, location.state]);
 
 
-  
-  const handleSelect = (id) => setSelectedAddressId(id);
+
 
 
   if (loading)
@@ -96,31 +129,49 @@ useEffect(() => {
 
       </div>
     </div>
-  );const handleCreateOrder = async () => {
-  if (!selectedAddressId) {
+  );
+const handleCreateOrder = async () => {
+  if (!selectedAddressId && !guestAddress.aliciAdiSoyadi) {
     showToast("error", "Lütfen bir teslimat adresi seçin");
     return;
   }
 
   if (!termsAccepted) {
-    showToast("error", "KVKK ve Mesafeli Satış Sözleşmesini kabul etmelisiniz");
+    showToast("error", "Sözleşmeleri kabul etmelisiniz");
     return;
   }
 
   try {
     setCreatingOrder(true);
+    const token = localStorage.getItem("token");
 
-    const result = await createOrderApi({
-      
-      addressId: selectedAddressId,
-      contractsAccepted: true,
-    });
+    let payload = {
+      contractsAccepted: true
+    };
 
-    
-    window.location.href = result.paymentLink;
+    if (token) {
+      // 🟢 LOGINLI KULLANICI: Postman'deki gibi direkt addressId gönderiyoruz
+      payload.addressId = selectedAddressId;
+    } else {
+      // 🟡 GUEST KULLANICI: Misafir bilgileri ve açık adres objesi
+      payload.guestId = sessionStorage.getItem("guestId");
+      payload.guestName = guestName;
+      payload.guestEmail = guestEmail;
+      payload.guestPhone = guestPhone;
+      payload.address = guestAddress; // Misafirde adres objesi gönderilir
+    }
 
+    console.log("Gönderilen Payload:", payload); // Debug için mutlaka bak
+
+    const response = await createOrderApi(payload);
+
+    // Backend'den gelen String (paymentLink) ise direkt yönlendir
+    if (typeof response === "string" || response.paymentLink) {
+      window.location.href = response.paymentLink || response;
+    }
   } catch (err) {
-    showToast("error", "Sipariş oluşturulamadı");
+    console.error("Hata Detayı:", err.response?.data);
+    showToast("error", err.response?.data?.message || "Sipariş oluşturulamadı");
   } finally {
     setCreatingOrder(false);
   }
@@ -236,6 +287,35 @@ useEffect(() => {
   </div>
 )}
         </div>
+{!localStorage.getItem("token") && (
+  <div className="bg-white rounded-2xl shadow-lg p-5 mb-6">
+    <h2 className="text-lg font-semibold text-gray-900 mb-3">Teslimat Bilgileri</h2>
+
+    <div className="flex flex-col gap-4">
+      <input
+        type="text"
+        placeholder="Ad Soyad"
+        value={guestName}
+        onChange={(e) => setGuestName(e.target.value)}
+        className="border border-gray-300 rounded-xl p-3 w-full"
+      />
+      <input
+        type="email"
+        placeholder="E-posta"
+        value={guestEmail}
+        onChange={(e) => setGuestEmail(e.target.value)}
+        className="border border-gray-300 rounded-xl p-3 w-full"
+      />
+      <input
+        type="text"
+        placeholder="Telefon"
+        value={guestPhone}
+        onChange={(e) => setGuestPhone(e.target.value)}
+        className="border border-gray-300 rounded-xl p-3 w-full"
+      />
+    </div>
+  </div>
+)}
 
         {/* Hata Mesajı */}
         {errorMessage && (

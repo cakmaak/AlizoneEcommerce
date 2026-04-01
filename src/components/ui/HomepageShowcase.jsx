@@ -18,7 +18,7 @@ const HomepageShowcase = () => {
         {slides.map((item) => (
           <div
             key={item.img}
-            onClick={() => (window.location.href = item.path)}
+            onClick={() => navigate(item.path)}
             className="relative rounded-3xl overflow-hidden shadow-xl group bg-white cursor-pointer"
           >
             <img

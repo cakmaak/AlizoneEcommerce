@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { getAllProducts } from "../../services/productApi";
 import ProductCard from "../../components/product/ProductCard";
 import { Filter, Check, ChevronDown } from "lucide-react";
@@ -51,6 +51,7 @@ const FunBanner = () => {
   );
 };
 const ProductList = () => {
+  const productsRef = useRef(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
@@ -73,6 +74,17 @@ const [filters, setFilters] = useState({
       .then(setProducts)
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    // Eğer URL'de bir kategori varsa ve sayfa yüklenmişse aşağı kaydır
+    if (params.get("kategori") && productsRef.current) {
+      productsRef.current.scrollIntoView({ 
+        behavior: "smooth", 
+        block: "start" 
+      });
+    }
+  }, [location.search]);
 useEffect(() => {
   const params = new URLSearchParams(location.search);
   const kategori = params.get("kategori") ? params.get("kategori").split(",") : [];
@@ -168,7 +180,7 @@ useEffect(() => {
     </button>
 
     {/* === GRID === */}
-    <div className="grid lg:grid-cols-12 gap-8">
+    <div ref={productsRef} className="grid lg:grid-cols-12 gap-8 pt-10">
 
       {/* === FİLTRE PANELİ === */}
       <aside className={`lg:col-span-3 lg:pl-0 ${showFilters ? "block" : "hidden"} lg:block`}>
