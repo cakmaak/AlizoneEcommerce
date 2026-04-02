@@ -200,8 +200,31 @@ const references = [
 
     ],
   },
+   {
+    title: "BATI YAKASI 2 SİTESİ-YENİMAHALLE-BOSCH SPLİT KLİMALAR",
+    images: [
+      "/batıyak2/1.jpeg",
+      "/batıyak2/2.jpeg",
+      "/batıyak2/3.jpeg",
+      "/batıyak2/4.jpeg",
+      
+     
+    ],
+  },
+     {
+    title: "KUASAR MAKİNE-KAHRAMANKAZAN-SAKURA SPLİT KLİMA",
+    images: [
+      "/kuasar/1.jpeg",
+      "/kuasar/2.jpeg",
+      "/kuasar/3.jpeg",
+      "/kuasar/4.jpeg",
+      
+     
+    ],
+  },
+  
   {
-    title: "NAVLUNGO Ankara Şubesi-YENİMAHALLE-BOSCH SPLİT KLİMA",
+    title: "NAVLUNGO Ankara Şubesi-YENİMAHALLE-BOSCH SPLİT KLİMALAR",
     images: [
       "/Navlunga/1.jpeg",
       "/Navlunga/2.jpeg",
@@ -211,6 +234,18 @@ const references = [
      
     ],
   },
+    {
+    title: "BOSCH BAYİ ÇAKIRLAR-YENİMAHALLE-BOSCH KASET TİPİ KLİMA",
+    images: [
+      "/bshcakir/1.jpeg",
+      "/bshcakir/2.jpeg",
+      "/bshcakir/3.jpeg",
+      
+      
+     
+    ],
+  },
+  
   {
     title: "NİLOVA CAFE-KAHRAMANKAZAN -CARRIER SALON TİPİ KLİMA",
     images: [
