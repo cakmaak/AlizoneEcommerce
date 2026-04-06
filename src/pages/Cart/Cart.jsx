@@ -13,9 +13,10 @@ import {
   ChevronRight, User, Ghost 
 } from "lucide-react";
 
-// --- YARDIMCI BİLEŞEN: CartItem ---
-// --- YARDIMCI BİLEŞEN: CartItem (Gelişmiş Renkli Versiyon) ---
 const CartItem = ({ item, dispatch }) => {
+  
+  
+  
   const handleQuantity = async (newQty) => {
     if (newQty < 1) return;
     dispatch(updateCartQuantity({ basketItemId: item.basketItemId, adet: newQty }))
@@ -105,6 +106,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items } = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.auth?.user);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalStep, setModalStep] = useState('selection');
@@ -122,9 +124,9 @@ const Cart = () => {
     }
   });
 
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+useEffect(() => {
+  dispatch(fetchCart());
+}, [dispatch, user]);
 
   const totalPrice = items.reduce((sum, item) => sum + Number(item.fiyat) * Number(item.adet), 0);
 

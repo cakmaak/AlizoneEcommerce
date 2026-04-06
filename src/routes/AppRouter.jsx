@@ -55,14 +55,13 @@ import ScrollToTop from "../ScrollToTop"
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
-    <ScrollToTop />
-      <Routes>
-      
+    <>
+      <ScrollToTop />
 
+      <Routes>
         {/* 🔥 NAVBAR OLAN SAYFALAR */}
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/references" element={<References />} />
@@ -82,8 +81,9 @@ const AppRouter = () => {
 
           <Route path="/fakebank" element={<FakeBank />} />
           <Route path="/order/success/:orderId" element={<OrderSuccess />} />
-          <Route path="/order/fail/:orderId" element={<OrderFail/>} />
-           <Route
+          <Route path="/order/fail/:orderId" element={<OrderFail />} />
+
+          <Route
             path="/cart"
             element={
               <PrivateRoute>
@@ -91,9 +91,6 @@ const AppRouter = () => {
               </PrivateRoute>
             }
           />
-
-          {/* 🔒 PRIVATE */}
-         
 
           <Route
             path="/profile"
@@ -113,14 +110,14 @@ const AppRouter = () => {
             }
           />
 
-         <Route
-  path="/addresses/add"
-  element={
-    <PrivateRoute>
-      <AddAddress />
-    </PrivateRoute>
-  }
-/>
+          <Route
+            path="/addresses/add"
+            element={
+              <PrivateRoute>
+                <AddAddress />
+              </PrivateRoute>
+            }
+          />
 
           <Route
             path="/addresses/edit/:id"
@@ -141,32 +138,31 @@ const AppRouter = () => {
           />
         </Route>
 
-        {/* 🛑 ADMIN (NAVBAR YOK) */}
-       <Route
-  path="/admin"
-  element={
-    <AdminRoute>
-      <AdminLayout />
-    </AdminRoute>
-  }
->
-  <Route index element={<AdminDashboard />} />
-  <Route path="adminreferences" element={<AdminReferences />} />
-  <Route path="add-product" element={<AddProduct />} /> 
-  <Route path="update-price/:id" element={<UpdatePrice />} />
-  <Route path="update-image" element={<UpdateImage />} />
-  <Route path="update-stock" element={<UpdateStock />} />
-  <Route path="update-price" element={<UpdatePrice />} />
-  <Route path="delivered-truck" element={<DeliveredTruck />} />
-  <Route path="update-btu" element={<UpdateBtu />} />
-  <Route path="orders" element={<AdminOrders />} />
-  <Route path="refund-order" element={<RefundOrder />} />
-  <Route path="set-teklif" element={<Setteklifal />} />
-  <Route path="setname" element={<Setname></Setname>} />
-</Route>
+        {/* 🛑 ADMIN */}
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminLayout />
+            </AdminRoute>
+          }
+        >
+          <Route index element={<AdminDashboard />} />
+          <Route path="adminreferences" element={<AdminReferences />} />
+          <Route path="add-product" element={<AddProduct />} />
+          <Route path="update-price/:id" element={<UpdatePrice />} />
+          <Route path="update-image" element={<UpdateImage />} />
+          <Route path="update-stock" element={<UpdateStock />} />
+          <Route path="update-price" element={<UpdatePrice />} />
+          <Route path="delivered-truck" element={<DeliveredTruck />} />
+          <Route path="update-btu" element={<UpdateBtu />} />
+          <Route path="orders" element={<AdminOrders />} />
+          <Route path="refund-order" element={<RefundOrder />} />
+          <Route path="set-teklif" element={<Setteklifal />} />
+          <Route path="setname" element={<Setname />} />
+        </Route>
       </Routes>
-      
-    </BrowserRouter>
+    </>
   );
 };
 

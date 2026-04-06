@@ -37,12 +37,11 @@ const handleAddToCart = async () => {
     await dispatch(addCartItem({ productId: product.id, quantity: 1, guestId })).unwrap();
 
     setToast({ message: "Ürün sepete eklendi" });
+    window.dispatchEvent(new Event("openCart"));
+    
 
-    // 3 saniye sonra otomatik navigate (isteğe bağlı)
-    setTimeout(() => {
-      setToast(null);
-      navigate("/cart");
-    }, 3000);
+   
+
   } catch (err) {
     setToast({ message: err?.message || "Stokta yeterli ürün yok" });
   }
