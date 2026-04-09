@@ -12,7 +12,7 @@ export const createOrder = async (payload) => {
         headers: {
           Authorization: token ? `Bearer ${token}` : undefined,
           "Content-Type": "application/json",
-        },
+        },F
       }
     );
 

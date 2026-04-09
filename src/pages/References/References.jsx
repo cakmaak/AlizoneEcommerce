@@ -282,7 +282,7 @@ const references = [
     ],
   },
   {
-    title: "TADBİLEN SHOP CARRIER SALON TİPİ KLİMA-YENİMAHALLE ",
+    title: "TADBİLEN SHOP KLİMA-YENİMAHALLE- CARRIER SALON TİPİ KLİMA ",
     images: [
       "/Tadbilen/1.jpeg",
       "/Tadbilen/2.jpeg",
@@ -291,6 +291,25 @@ const references = [
      
     ],
   },
+    {
+    title: "FARİS BİSTRO KLİMA -ETLİK- LG SALON TİPİ  ",
+    images: [
+      "/Faris/1.jpeg",
+      "/Faris/2.jpeg",
+   
+     
+    ],
+  },
+      {
+    title: "GALLERİA KONUTLARI -ÇANKAYA- BOSCH SPLİT KLİMA  ",
+    images: [
+      "/Galleria/1.jpeg",
+      "/Galleria/2.jpeg",
+   
+     
+    ],
+  },
+  
 ];
 
 export default function References() {
