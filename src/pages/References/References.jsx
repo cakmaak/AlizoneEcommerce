@@ -292,7 +292,7 @@ const references = [
     ],
   },
     {
-    title: "FARİS BİSTRO KLİMA -ETLİK- LG SALON TİPİ  ",
+    title: "FARİS BİSTRO -ETLİK- LG SALON TİPİ KLİMA   ",
     images: [
       "/Faris/1.jpeg",
       "/Faris/2.jpeg",
