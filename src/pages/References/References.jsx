@@ -282,7 +282,7 @@ const references = [
     ],
   },
   {
-    title: "TADBİLEN SHOP KLİMA-YENİMAHALLE- CARRIER SALON TİPİ KLİMA ",
+    title: "TADBİLEN SHOP -YENİMAHALLE- CARRIER SALON TİPİ KLİMA ",
     images: [
       "/Tadbilen/1.jpeg",
       "/Tadbilen/2.jpeg",
