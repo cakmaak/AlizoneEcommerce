@@ -188,6 +188,32 @@ const references = [
 
     ],
   },
+   {
+    title: "LİTA ASTORİA BEYTEPE -ÇANKAYA- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
+    images: [
+      "/LitaAstoria/1.jpeg",
+      "/LitaAstoria/2.jpeg",
+      "/LitaAstoria/3.jpeg",
+      "/LitaAstoria/4.jpeg",
+      "/LitaAstoria/5.jpeg",
+      "/LitaAstoria/6.jpeg",
+   
+
+    ],
+  },
+     {
+    title: "HUZURKENT YAŞAM EVLERİ -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
+    images: [
+      "/Huzurkent/1.jpeg",
+      "/Huzurkent/2.jpeg",
+      "/Huzurkent/3.jpeg",
+      "/Huzurkent/4.jpeg",
+      "/Huzurkent/5.jpeg",
+      
+   
+
+    ],
+  },
   {
     title: "FARAS 2 BULVAR KONUTLARI -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
     images: [
