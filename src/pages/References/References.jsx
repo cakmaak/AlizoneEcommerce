@@ -282,11 +282,26 @@ const references = [
     ],
   },
     {
+    title: "ANGORA GÖKSU EVLERİ -YENİMAHALLE -BOSCH SPLİT KLİMA ",
+    images: [
+      "/Angora/1.jpeg",
+      "/Angora/3.jpeg",
+      "/Angora/4.jpeg",
+    ],
+  },
+      {
     title: "NUR OTOMOTİV  -YENİMAHALLE -  BOSCH SPLİT PREMİUM KLİMA ",
     images: [
       "/NUROTO/1.jpeg",
       "/NUROTO/2.jpeg",
   
+    ],
+  },
+        {
+    title: "DR. DOĞAN SOYALP MUAYENEHENESİ -ETİMESGUT-  CARRİER SALON TİPİ KLİMA ",
+    images: [
+      "/Soyalp/1.jpeg",
+      "/Soyalp/2.jpeg",
     ],
   },
       {
