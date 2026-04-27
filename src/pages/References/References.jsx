@@ -215,6 +215,30 @@ const references = [
     ],
   },
   {
+    title: "ÇEV ATIK GERİ DÖNÜŞÜM A.Ş -YENİMAHALLE- BOSCH SALON TİPİ KLİMA ",
+    images: [
+      "/ÇEV/1.jpeg",
+      "/ÇEV/2.jpeg",
+
+    ],
+  },
+  {
+    title: "ÇAKIRŞEHİR SİTESİ -YENİMAHALLE- BOSCH SPLİT KLİMA ",
+    images: [
+      "/ÇAKŞH/1.jpeg",
+      "/ÇAKŞH/2.jpeg",
+
+    ],
+  },
+    {
+    title: "TÜRELİ İŞ MERKEZİ -ÇANKAYA- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
+    images: [
+      "/TÜRELİ/1.jpeg",
+      "/TÜRELİ/2.jpeg",
+
+    ],
+  },
+  {
     title: "FARAS 2 BULVAR KONUTLARI -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
     images: [
  "/Faraf/1.jpeg",
