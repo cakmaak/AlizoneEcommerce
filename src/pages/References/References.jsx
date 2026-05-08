@@ -238,6 +238,22 @@ const references = [
 
     ],
   },
+      {
+    title: "ALHİSAR SİTESİ -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA  ",
+    images: [
+      "/alhisar/1.jpeg",
+      "/alhisar/2.jpeg",
+
+    ],
+  },
+  {
+    title: "ALTIN PLAK -YENİMAHALLE- BOSCH SALON TİPİ KLİMA ",
+    images: [
+      "/altınplak/1.jpeg",
+      "/altınplak/2.jpeg",
+
+    ],
+  },
   {
     title: "FARAS 2 BULVAR KONUTLARI -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
     images: [
