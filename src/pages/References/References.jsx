@@ -255,6 +255,23 @@ const references = [
     ],
   },
   {
+    title: "SER İNCİ KONUTLARI -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
+    images: [
+      "/Ser/1.jpeg",
+      "/Ser/2.jpeg",
+      "/Ser/3.jpeg"
+    ],
+  },
+    {
+    title: "ARİSSA POİNT -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
+    images: [
+      "/ArissaM/1.jpeg",
+      "/ArissaM/2.jpeg",
+      "/ArissaM/3.jpeg"
+    ],
+  },
+  {
+    
     title: "FARAS 2 BULVAR KONUTLARI -YENİMAHALLE- BOSCH MULTİSPLİT KLİMA 2 İÇ 1 DIŞ ÜNİTE ",
     images: [
  "/Faraf/1.jpeg",
