@@ -22,6 +22,8 @@ function App() {
     return () => window.removeEventListener("openCart", handler);
   }, []);
 
+  
+
   return (
     <BrowserRouter>
       {/* ROUTES */}
