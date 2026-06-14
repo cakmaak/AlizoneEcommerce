@@ -40,7 +40,7 @@ const HomepageSlider = () => {
         </h1>
 
         <p className="mt-4 text-sm md:text-lg text-white/90 max-w-xl">
-          Bosch, Daikin ve Mitsubishi inverter klimalarla  
+          Bosch, Sakura ve Altus inverter klimalarla  
           dört mevsim konforu yaşayın
         </p>
 
