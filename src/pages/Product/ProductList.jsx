@@ -54,6 +54,7 @@ const ProductList = () => {
   const productsRef = useRef(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const location = useLocation();
   const navigate = useNavigate()
@@ -70,8 +71,13 @@ const [filters, setFilters] = useState({
   fiyat: [0, 200000]
 });
   useEffect(() => {
+    setError(false);
     getAllProducts()
-      .then(setProducts)
+      .then((data) => setProducts(Array.isArray(data) ? data : []))
+      .catch(() => {
+        setProducts([]);
+        setError(true);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -161,6 +167,14 @@ useEffect(() => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center font-bold text-red-500">
+        Ürünler yüklenirken bir hata oluştu
+      </div>
+    );
+  }
+
   return (
     
    <main className="pt-28 min-h-screen bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50">
@@ -242,7 +256,11 @@ useEffect(() => {
 
       {/* === ÜRÜNLER === */}
       <section className="lg:col-span-9">
-        {filteredProducts.length === 0 ? (
+        {products.length === 0 ? (
+          <div className="bg-white rounded-3xl shadow p-12 text-center font-semibold text-pink-500 text-lg">
+            Henüz listelenecek ürün yok
+          </div>
+        ) : filteredProducts.length === 0 ? (
           <div className="bg-white rounded-3xl shadow p-12 text-center font-semibold text-pink-500 text-lg animate-pulse">
             Üzgünüz 😢 <br /> Bu filtrelere uygun ürün bulunamadı!
           </div>

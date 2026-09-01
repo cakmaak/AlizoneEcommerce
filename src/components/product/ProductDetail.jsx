@@ -61,9 +61,9 @@ const handleAddToCart = async () => {
   }
 };
 const isOutOfStock = product.stokadeti === 0;
-const isSakura = product.marka.toUpperCase() === "SAKURA";
+const isSakura = product.marka?.toUpperCase() === "SAKURA";
 const isBosch3000 =
-  product.marka.toUpperCase() === "BOSCH" &&
+  product.marka?.toUpperCase() === "BOSCH" &&
   product.model?.includes("3000");
 
 
@@ -214,15 +214,12 @@ Fiyat: ₺${product.fiyat}
   ) 
   : 
   (
-    <button
-      onClick={handleAddToCart}
-      className="flex-1 bg-indigo-600 hover:bg-indigo-700
-        text-white py-3 rounded-xl font-semibold
-        flex justify-center items-center gap-2"
-    >
-      <ShoppingCart size={18} />
-      Sepete Ekle
-    </button>
+       <button
+  onClick={() => window.location.href = "tel:+905323310976"}
+  className="flex-1 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
+>
+  Bilgi Al
+</button>
   )}
 </div>
         </div>

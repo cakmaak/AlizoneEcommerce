@@ -1,5 +1,5 @@
-
 import api from "./api";
+import { getAllProducts } from "./productApi";
 
 const addProduct = async (productData) => {
   const res = await api.post(
@@ -54,10 +54,7 @@ const updateBtu = async (productId, btu) => {
   );
   return res.data;
 };
-const getProducts = async () => {
-  const res = await api.get("/alizone/adminpanel/getproducts");
-  return res.data;
-};
+const getProducts = async () => getAllProducts();
 const getOrders = async () => {
   const res = await api.get("/alizone/adminpanel/getorders");
   return res.data;

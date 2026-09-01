@@ -1,22 +1,26 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import api from "../../services/api";
+import { getProductById } from "../../services/productApi";
 import ProductDetail from "../../components/product/ProductDetail";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!id) return;
 
     setLoading(true);
+    setError(false);
 
-    api
-      .get(`/alizone/product/getproduct/${id}`)
-      .then((res) => setProduct(res.data))
-      .catch(() => setProduct(null))
+    getProductById(id)
+      .then((data) => setProduct(data))
+      .catch(() => {
+        setProduct(null);
+        setError(true);
+      })
       .finally(() => setLoading(false));
   }, [id]);
 
@@ -25,6 +29,16 @@ const ProductDetailPage = () => {
       <div className="min-h-[60vh] flex items-center justify-center">
         <span className="text-lg font-semibold text-slate-500">
           Ürün yükleniyor...
+        </span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <span className="text-lg font-semibold text-red-500">
+          Ürün yüklenirken bir hata oluştu
         </span>
       </div>
     );

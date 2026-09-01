@@ -209,12 +209,12 @@ Fiyat: ₺${product.fiyat}
               Teklif Al
             </button>
           ) : (
-            <button
-              onClick={handleAddToCart}
-              className="flex-1 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
-            >
-              Sepete Ekle
-            </button>
+       <button
+  onClick={() => window.location.href = "tel:+905323310976"}
+  className="flex-1 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
+>
+  Bilgi Al
+</button>
           )}
         </div>
 

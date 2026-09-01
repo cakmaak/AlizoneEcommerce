@@ -100,12 +100,22 @@ const Home = () => {
              
             
 
-            <Link
-              to="/products"
-              className="inline-block mt-1 rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
-            >
-              Ürünleri İncele
-            </Link>
+           <div className="flex flex-col items-center gap-3">
+  <Link 
+    to="/products" 
+    className="rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
+  >
+    Ürünleri İncele
+  </Link>
+
+  <a 
+    href="tel:+905323310976" 
+    className="rounded-full bg-emerald-500 px-10 py-3 font-semibold text-white hover:bg-emerald-600 transition"
+  >
+    İletişime Geç
+  </a>
+</div>
+            
           </div>
         </div>
       </section>
